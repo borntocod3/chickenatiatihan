@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 05, 2016 at 07:53 AM
+-- Generation Time: Feb 05, 2016 at 09:15 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -205,8 +205,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (101, 'widget_calendar', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (102, 'widget_tag_cloud', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (103, 'widget_nav_menu', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
-(104, 'cron', 'a:3:{i:1454653321;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1454653326;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
-(105, '_transient_doing_cron', '1454655121.5299959182739257812500', 'yes'),
+(104, 'cron', 'a:4:{i:1454653321;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1454653326;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1454657549;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
+(105, '_transient_doing_cron', '1454660119.2641339302062988281250', 'yes'),
 (106, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.4.2.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.4.2.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.4.2-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.4.2-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.4.2";s:7:"version";s:5:"4.4.2";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1454655034;s:15:"version_checked";s:5:"4.4.2";s:12:"translations";a:0:{}}', 'yes'),
 (108, '_site_transient_timeout_theme_roots', '1454656005', 'yes'),
 (109, '_site_transient_theme_roots', 'a:4:{s:13:"twentyfifteen";s:7:"/themes";s:14:"twentyfourteen";s:7:"/themes";s:13:"twentysixteen";s:7:"/themes";s:5:"unite";s:7:"/themes";}', 'yes'),
@@ -234,21 +234,25 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (127, '_transient_dash_88ae138922fe95674369b1cb3d215a2b', '<div class="rss-widget"><ul><li><a class=''rsswidget'' href=''https://wordpress.org/news/2016/02/wordpress-4-4-2-security-and-maintenance-release/''>WordPress 4.4.2 Security and Maintenance Release</a> <span class="rss-date">February 2, 2016</span><div class="rssSummary">WordPress 4.4.2 is now available. This is a security release for all previous versions and we strongly encourage you to update your sites immediately. WordPress versions 4.4.1 and earlier are affected by two security issues: a possible SSRF for certain local URIs, reported by Ronni Skansing; and an open redirection attack, reported by Shailesh Suthar. Thank you [&hellip;]</div></li></ul></div><div class="rss-widget"><ul><li><a class=''rsswidget'' href=''http://wptavern.com/pantheon-launches-community-resource-for-scaling-wordpress''>WPTavern: Pantheon Launches Community Resource for Scaling WordPress</a></li><li><a class=''rsswidget'' href=''http://dougal.gunters.org/blog/2016/02/04/underscores-components-custom-starter-themes-for-faster-wordpress-theme-development/''>Dougal Campbell: Underscores Components – Custom starter themes for faster WordPress theme development</a></li><li><a class=''rsswidget'' href=''http://wptavern.com/shiny-updates-version-2-adds-functionality-for-themes-and-bulk-plugin-updates''>WPTavern: Shiny Updates Version 2 Adds Functionality for Themes and Bulk Plugin Updates</a></li></ul></div><div class="rss-widget"><ul><li class=''dashboard-news-plugin''><span>Popular Plugin:</span> <a href=''https://wordpress.org/plugins/updraftplus/'' class=''dashboard-news-plugin-link''>UpdraftPlus Backup and Restoration</a>&nbsp;<span>(<a href=''plugin-install.php?tab=plugin-information&amp;plugin=updraftplus&amp;_wpnonce=ded27748d6&amp;TB_iframe=true&amp;width=600&amp;height=800'' class=''thickbox'' title=''UpdraftPlus Backup and Restoration''>Install</a>)</span></li></ul></div>', 'no'),
 (128, '_site_transient_timeout_wporg_theme_feature_list', '1454664888', 'yes'),
 (129, '_site_transient_wporg_theme_feature_list', 'a:4:{s:6:"Colors";a:15:{i:0;s:5:"black";i:1;s:4:"blue";i:2;s:5:"brown";i:3;s:4:"gray";i:4;s:5:"green";i:5;s:6:"orange";i:6;s:4:"pink";i:7;s:6:"purple";i:8;s:3:"red";i:9;s:6:"silver";i:10;s:3:"tan";i:11;s:5:"white";i:12;s:6:"yellow";i:13;s:4:"dark";i:14;s:5:"light";}s:6:"Layout";a:9:{i:0;s:12:"fixed-layout";i:1;s:12:"fluid-layout";i:2;s:17:"responsive-layout";i:3;s:10:"one-column";i:4;s:11:"two-columns";i:5;s:13:"three-columns";i:6;s:12:"four-columns";i:7;s:12:"left-sidebar";i:8;s:13:"right-sidebar";}s:8:"Features";a:20:{i:0;s:19:"accessibility-ready";i:1;s:8:"blavatar";i:2;s:10:"buddypress";i:3;s:17:"custom-background";i:4;s:13:"custom-colors";i:5;s:13:"custom-header";i:6;s:11:"custom-menu";i:7;s:12:"editor-style";i:8;s:21:"featured-image-header";i:9;s:15:"featured-images";i:10;s:15:"flexible-header";i:11;s:20:"front-page-post-form";i:12;s:19:"full-width-template";i:13;s:12:"microformats";i:14;s:12:"post-formats";i:15;s:20:"rtl-language-support";i:16;s:11:"sticky-post";i:17;s:13:"theme-options";i:18;s:17:"threaded-comments";i:19;s:17:"translation-ready";}s:7:"Subject";a:3:{i:0;s:7:"holiday";i:1;s:13:"photoblogging";i:2;s:8:"seasonal";}}', 'yes'),
-(130, '_transient_is_multi_author', '0', 'yes'),
 (131, '_transient_twentysixteen_categories', '1', 'yes'),
 (132, '_site_transient_timeout_browser_f367f2d1c790a6da2a8786a61b5a5eab', '1455259002', 'yes'),
 (133, '_site_transient_browser_f367f2d1c790a6da2a8786a61b5a5eab', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:12:"48.0.2564.97";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (134, 'theme_mods_twentysixteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1454654210;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (135, 'current_theme', 'Unite', 'yes'),
-(136, 'theme_mods_unite', 'a:1:{i:0;b:0;}', 'yes'),
+(136, 'theme_mods_unite', 'a:2:{i:0;b:0;s:18:"nav_menu_locations";a:1:{s:7:"primary";i:2;}}', 'yes'),
 (137, 'theme_switched', '', 'yes'),
 (138, 'widget_unite_tabbed_widget', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (139, 'recently_activated', 'a:0:{}', 'yes'),
 (140, '_site_transient_timeout_poptags_40cd750bba9870f18aada2478b24840a', '1454665171', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 (141, '_site_transient_poptags_40cd750bba9870f18aada2478b24840a', 'a:100:{s:6:"widget";a:3:{s:4:"name";s:6:"widget";s:4:"slug";s:6:"widget";s:5:"count";s:4:"5663";}s:4:"post";a:3:{s:4:"name";s:4:"Post";s:4:"slug";s:4:"post";s:5:"count";s:4:"3554";}s:6:"plugin";a:3:{s:4:"name";s:6:"plugin";s:4:"slug";s:6:"plugin";s:5:"count";s:4:"3503";}s:5:"admin";a:3:{s:4:"name";s:5:"admin";s:4:"slug";s:5:"admin";s:5:"count";s:4:"3011";}s:5:"posts";a:3:{s:4:"name";s:5:"posts";s:4:"slug";s:5:"posts";s:5:"count";s:4:"2738";}s:9:"shortcode";a:3:{s:4:"name";s:9:"shortcode";s:4:"slug";s:9:"shortcode";s:5:"count";s:4:"2224";}s:7:"sidebar";a:3:{s:4:"name";s:7:"sidebar";s:4:"slug";s:7:"sidebar";s:5:"count";s:4:"2168";}s:6:"google";a:3:{s:4:"name";s:6:"google";s:4:"slug";s:6:"google";s:5:"count";s:4:"2009";}s:7:"twitter";a:3:{s:4:"name";s:7:"twitter";s:4:"slug";s:7:"twitter";s:5:"count";s:4:"1956";}s:4:"page";a:3:{s:4:"name";s:4:"page";s:4:"slug";s:4:"page";s:5:"count";s:4:"1949";}s:6:"images";a:3:{s:4:"name";s:6:"images";s:4:"slug";s:6:"images";s:5:"count";s:4:"1939";}s:8:"comments";a:3:{s:4:"name";s:8:"comments";s:4:"slug";s:8:"comments";s:5:"count";s:4:"1886";}s:5:"image";a:3:{s:4:"name";s:5:"image";s:4:"slug";s:5:"image";s:5:"count";s:4:"1791";}s:8:"facebook";a:3:{s:4:"name";s:8:"Facebook";s:4:"slug";s:8:"facebook";s:5:"count";s:4:"1589";}s:3:"seo";a:3:{s:4:"name";s:3:"seo";s:4:"slug";s:3:"seo";s:5:"count";s:4:"1520";}s:9:"wordpress";a:3:{s:4:"name";s:9:"wordpress";s:4:"slug";s:9:"wordpress";s:5:"count";s:4:"1502";}s:11:"woocommerce";a:3:{s:4:"name";s:11:"woocommerce";s:4:"slug";s:11:"woocommerce";s:5:"count";s:4:"1447";}s:6:"social";a:3:{s:4:"name";s:6:"social";s:4:"slug";s:6:"social";s:5:"count";s:4:"1302";}s:5:"links";a:3:{s:4:"name";s:5:"links";s:4:"slug";s:5:"links";s:5:"count";s:4:"1262";}s:7:"gallery";a:3:{s:4:"name";s:7:"gallery";s:4:"slug";s:7:"gallery";s:5:"count";s:4:"1248";}s:5:"email";a:3:{s:4:"name";s:5:"email";s:4:"slug";s:5:"email";s:5:"count";s:4:"1140";}s:7:"widgets";a:3:{s:4:"name";s:7:"widgets";s:4:"slug";s:7:"widgets";s:5:"count";s:4:"1066";}s:5:"pages";a:3:{s:4:"name";s:5:"pages";s:4:"slug";s:5:"pages";s:5:"count";s:4:"1040";}s:6:"jquery";a:3:{s:4:"name";s:6:"jquery";s:4:"slug";s:6:"jquery";s:5:"count";s:3:"984";}s:5:"media";a:3:{s:4:"name";s:5:"media";s:4:"slug";s:5:"media";s:5:"count";s:3:"946";}s:3:"rss";a:3:{s:4:"name";s:3:"rss";s:4:"slug";s:3:"rss";s:5:"count";s:3:"901";}s:4:"ajax";a:3:{s:4:"name";s:4:"AJAX";s:4:"slug";s:4:"ajax";s:5:"count";s:3:"883";}s:9:"ecommerce";a:3:{s:4:"name";s:9:"ecommerce";s:4:"slug";s:9:"ecommerce";s:5:"count";s:3:"883";}s:5:"video";a:3:{s:4:"name";s:5:"video";s:4:"slug";s:5:"video";s:5:"count";s:3:"872";}s:7:"content";a:3:{s:4:"name";s:7:"content";s:4:"slug";s:7:"content";s:5:"count";s:3:"867";}s:5:"login";a:3:{s:4:"name";s:5:"login";s:4:"slug";s:5:"login";s:5:"count";s:3:"854";}s:10:"javascript";a:3:{s:4:"name";s:10:"javascript";s:4:"slug";s:10:"javascript";s:5:"count";s:3:"807";}s:10:"buddypress";a:3:{s:4:"name";s:10:"buddypress";s:4:"slug";s:10:"buddypress";s:5:"count";s:3:"766";}s:10:"responsive";a:3:{s:4:"name";s:10:"responsive";s:4:"slug";s:10:"responsive";s:5:"count";s:3:"747";}s:8:"security";a:3:{s:4:"name";s:8:"security";s:4:"slug";s:8:"security";s:5:"count";s:3:"740";}s:5:"photo";a:3:{s:4:"name";s:5:"photo";s:4:"slug";s:5:"photo";s:5:"count";s:3:"735";}s:4:"feed";a:3:{s:4:"name";s:4:"feed";s:4:"slug";s:4:"feed";s:5:"count";s:3:"729";}s:7:"youtube";a:3:{s:4:"name";s:7:"youtube";s:4:"slug";s:7:"youtube";s:5:"count";s:3:"725";}s:4:"link";a:3:{s:4:"name";s:4:"link";s:4:"slug";s:4:"link";s:5:"count";s:3:"721";}s:4:"spam";a:3:{s:4:"name";s:4:"spam";s:4:"slug";s:4:"spam";s:5:"count";s:3:"718";}s:5:"share";a:3:{s:4:"name";s:5:"Share";s:4:"slug";s:5:"share";s:5:"count";s:3:"706";}s:10:"e-commerce";a:3:{s:4:"name";s:10:"e-commerce";s:4:"slug";s:10:"e-commerce";s:5:"count";s:3:"701";}s:6:"photos";a:3:{s:4:"name";s:6:"photos";s:4:"slug";s:6:"photos";s:5:"count";s:3:"681";}s:8:"category";a:3:{s:4:"name";s:8:"category";s:4:"slug";s:8:"category";s:5:"count";s:3:"675";}s:5:"embed";a:3:{s:4:"name";s:5:"embed";s:4:"slug";s:5:"embed";s:5:"count";s:3:"657";}s:9:"analytics";a:3:{s:4:"name";s:9:"analytics";s:4:"slug";s:9:"analytics";s:5:"count";s:3:"655";}s:4:"form";a:3:{s:4:"name";s:4:"form";s:4:"slug";s:4:"form";s:5:"count";s:3:"648";}s:3:"css";a:3:{s:4:"name";s:3:"CSS";s:4:"slug";s:3:"css";s:5:"count";s:3:"642";}s:6:"search";a:3:{s:4:"name";s:6:"search";s:4:"slug";s:6:"search";s:5:"count";s:3:"635";}s:9:"slideshow";a:3:{s:4:"name";s:9:"slideshow";s:4:"slug";s:9:"slideshow";s:5:"count";s:3:"629";}s:6:"custom";a:3:{s:4:"name";s:6:"custom";s:4:"slug";s:6:"custom";s:5:"count";s:3:"608";}s:5:"stats";a:3:{s:4:"name";s:5:"stats";s:4:"slug";s:5:"stats";s:5:"count";s:3:"598";}s:6:"slider";a:3:{s:4:"name";s:6:"slider";s:4:"slug";s:6:"slider";s:5:"count";s:3:"595";}s:6:"button";a:3:{s:4:"name";s:6:"button";s:4:"slug";s:6:"button";s:5:"count";s:3:"589";}s:7:"comment";a:3:{s:4:"name";s:7:"comment";s:4:"slug";s:7:"comment";s:5:"count";s:3:"585";}s:5:"theme";a:3:{s:4:"name";s:5:"theme";s:4:"slug";s:5:"theme";s:5:"count";s:3:"578";}s:4:"menu";a:3:{s:4:"name";s:4:"menu";s:4:"slug";s:4:"menu";s:5:"count";s:3:"575";}s:4:"tags";a:3:{s:4:"name";s:4:"tags";s:4:"slug";s:4:"tags";s:5:"count";s:3:"574";}s:9:"dashboard";a:3:{s:4:"name";s:9:"dashboard";s:4:"slug";s:9:"dashboard";s:5:"count";s:3:"569";}s:10:"categories";a:3:{s:4:"name";s:10:"categories";s:4:"slug";s:10:"categories";s:5:"count";s:3:"561";}s:10:"statistics";a:3:{s:4:"name";s:10:"statistics";s:4:"slug";s:10:"statistics";s:5:"count";s:3:"546";}s:3:"ads";a:3:{s:4:"name";s:3:"ads";s:4:"slug";s:3:"ads";s:5:"count";s:3:"538";}s:6:"mobile";a:3:{s:4:"name";s:6:"mobile";s:4:"slug";s:6:"mobile";s:5:"count";s:3:"533";}s:4:"user";a:3:{s:4:"name";s:4:"user";s:4:"slug";s:4:"user";s:5:"count";s:3:"522";}s:6:"editor";a:3:{s:4:"name";s:6:"editor";s:4:"slug";s:6:"editor";s:5:"count";s:3:"521";}s:5:"users";a:3:{s:4:"name";s:5:"users";s:4:"slug";s:5:"users";s:5:"count";s:3:"510";}s:4:"list";a:3:{s:4:"name";s:4:"list";s:4:"slug";s:4:"list";s:5:"count";s:3:"504";}s:7:"picture";a:3:{s:4:"name";s:7:"picture";s:4:"slug";s:7:"picture";s:5:"count";s:3:"504";}s:9:"affiliate";a:3:{s:4:"name";s:9:"affiliate";s:4:"slug";s:9:"affiliate";s:5:"count";s:3:"499";}s:7:"plugins";a:3:{s:4:"name";s:7:"plugins";s:4:"slug";s:7:"plugins";s:5:"count";s:3:"498";}s:6:"simple";a:3:{s:4:"name";s:6:"simple";s:4:"slug";s:6:"simple";s:5:"count";s:3:"476";}s:9:"multisite";a:3:{s:4:"name";s:9:"multisite";s:4:"slug";s:9:"multisite";s:5:"count";s:3:"475";}s:12:"contact-form";a:3:{s:4:"name";s:12:"contact form";s:4:"slug";s:12:"contact-form";s:5:"count";s:3:"472";}s:12:"social-media";a:3:{s:4:"name";s:12:"social media";s:4:"slug";s:12:"social-media";s:5:"count";s:3:"462";}s:7:"contact";a:3:{s:4:"name";s:7:"contact";s:4:"slug";s:7:"contact";s:5:"count";s:3:"461";}s:8:"pictures";a:3:{s:4:"name";s:8:"pictures";s:4:"slug";s:8:"pictures";s:5:"count";s:3:"457";}s:10:"navigation";a:3:{s:4:"name";s:10:"navigation";s:4:"slug";s:10:"navigation";s:5:"count";s:3:"432";}s:3:"url";a:3:{s:4:"name";s:3:"url";s:4:"slug";s:3:"url";s:5:"count";s:3:"429";}s:5:"flash";a:3:{s:4:"name";s:5:"flash";s:4:"slug";s:5:"flash";s:5:"count";s:3:"422";}s:4:"html";a:3:{s:4:"name";s:4:"html";s:4:"slug";s:4:"html";s:5:"count";s:3:"421";}s:4:"shop";a:3:{s:4:"name";s:4:"shop";s:4:"slug";s:4:"shop";s:5:"count";s:3:"418";}s:3:"api";a:3:{s:4:"name";s:3:"api";s:4:"slug";s:3:"api";s:5:"count";s:3:"415";}s:10:"newsletter";a:3:{s:4:"name";s:10:"newsletter";s:4:"slug";s:10:"newsletter";s:5:"count";s:3:"414";}s:9:"marketing";a:3:{s:4:"name";s:9:"marketing";s:4:"slug";s:9:"marketing";s:5:"count";s:3:"408";}s:4:"meta";a:3:{s:4:"name";s:4:"meta";s:4:"slug";s:4:"meta";s:5:"count";s:3:"403";}s:3:"tag";a:3:{s:4:"name";s:3:"tag";s:4:"slug";s:3:"tag";s:5:"count";s:3:"400";}s:6:"events";a:3:{s:4:"name";s:6:"events";s:4:"slug";s:6:"events";s:5:"count";s:3:"400";}s:8:"calendar";a:3:{s:4:"name";s:8:"calendar";s:4:"slug";s:8:"calendar";s:5:"count";s:3:"398";}s:4:"news";a:3:{s:4:"name";s:4:"News";s:4:"slug";s:4:"news";s:5:"count";s:3:"396";}s:8:"tracking";a:3:{s:4:"name";s:8:"tracking";s:4:"slug";s:8:"tracking";s:5:"count";s:3:"389";}s:9:"thumbnail";a:3:{s:4:"name";s:9:"thumbnail";s:4:"slug";s:9:"thumbnail";s:5:"count";s:3:"389";}s:11:"advertising";a:3:{s:4:"name";s:11:"advertising";s:4:"slug";s:11:"advertising";s:5:"count";s:3:"389";}s:4:"code";a:3:{s:4:"name";s:4:"code";s:4:"slug";s:4:"code";s:5:"count";s:3:"382";}s:10:"shortcodes";a:3:{s:4:"name";s:10:"shortcodes";s:4:"slug";s:10:"shortcodes";s:5:"count";s:3:"380";}s:8:"lightbox";a:3:{s:4:"name";s:8:"lightbox";s:4:"slug";s:8:"lightbox";s:5:"count";s:3:"379";}s:4:"text";a:3:{s:4:"name";s:4:"text";s:4:"slug";s:4:"text";s:5:"count";s:3:"379";}s:9:"automatic";a:3:{s:4:"name";s:9:"automatic";s:4:"slug";s:9:"automatic";s:5:"count";s:3:"377";}s:6:"upload";a:3:{s:4:"name";s:6:"upload";s:4:"slug";s:6:"upload";s:5:"count";s:3:"375";}s:6:"paypal";a:3:{s:4:"name";s:6:"paypal";s:4:"slug";s:6:"paypal";s:5:"count";s:3:"375";}s:7:"profile";a:3:{s:4:"name";s:7:"profile";s:4:"slug";s:7:"profile";s:5:"count";s:3:"371";}}', 'yes'),
-(142, '_transient_all_the_cool_cats', '1', 'yes'),
-(146, '_site_transient_update_plugins', 'O:8:"stdClass":5:{s:12:"last_checked";i:1454655145;s:7:"checked";a:3:{s:19:"akismet/akismet.php";s:5:"3.1.7";s:49:"cpt-bootstrap-carousel/cpt-bootstrap-carousel.php";s:5:"1.9.1";s:9:"hello.php";s:3:"1.6";}s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:3:{s:19:"akismet/akismet.php";O:8:"stdClass":6:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.1.7";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.1.7.zip";}s:49:"cpt-bootstrap-carousel/cpt-bootstrap-carousel.php";O:8:"stdClass":6:{s:2:"id";s:5:"40275";s:4:"slug";s:22:"cpt-bootstrap-carousel";s:6:"plugin";s:49:"cpt-bootstrap-carousel/cpt-bootstrap-carousel.php";s:11:"new_version";s:5:"1.9.1";s:3:"url";s:53:"https://wordpress.org/plugins/cpt-bootstrap-carousel/";s:7:"package";s:71:"https://downloads.wordpress.org/plugin/cpt-bootstrap-carousel.1.9.1.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}}}', 'yes');
+(146, '_site_transient_update_plugins', 'O:8:"stdClass":5:{s:12:"last_checked";i:1454655145;s:7:"checked";a:3:{s:19:"akismet/akismet.php";s:5:"3.1.7";s:49:"cpt-bootstrap-carousel/cpt-bootstrap-carousel.php";s:5:"1.9.1";s:9:"hello.php";s:3:"1.6";}s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:3:{s:19:"akismet/akismet.php";O:8:"stdClass":6:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.1.7";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.1.7.zip";}s:49:"cpt-bootstrap-carousel/cpt-bootstrap-carousel.php";O:8:"stdClass":6:{s:2:"id";s:5:"40275";s:4:"slug";s:22:"cpt-bootstrap-carousel";s:6:"plugin";s:49:"cpt-bootstrap-carousel/cpt-bootstrap-carousel.php";s:11:"new_version";s:5:"1.9.1";s:3:"url";s:53:"https://wordpress.org/plugins/cpt-bootstrap-carousel/";s:7:"package";s:71:"https://downloads.wordpress.org/plugin/cpt-bootstrap-carousel.1.9.1.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}}}', 'yes'),
+(147, '_site_transient_timeout_browser_cd1fd20ae4022f16fd8bb68499946dc7', '1455262250', 'yes'),
+(148, '_site_transient_browser_cd1fd20ae4022f16fd8bb68499946dc7', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:12:"48.0.2564.97";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
+(149, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes'),
+(150, '_transient_is_multi_author', '0', 'yes'),
+(151, '_transient_all_the_cool_cats', '1', 'yes'),
+(152, 'category_children', 'a:0:{}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -268,7 +272,71 @@ CREATE TABLE `wp_postmeta` (
 --
 
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
-(1, 2, '_wp_page_template', 'default');
+(1, 2, '_wp_page_template', 'default'),
+(2, 4, '_edit_last', '1'),
+(3, 4, '_edit_lock', '1454657421:1'),
+(4, 4, '_wp_page_template', 'default'),
+(5, 6, '_edit_last', '1'),
+(6, 6, '_wp_page_template', 'default'),
+(7, 6, '_edit_lock', '1454657428:1'),
+(8, 8, '_edit_last', '1'),
+(9, 8, '_wp_page_template', 'default'),
+(10, 8, '_edit_lock', '1454659752:1'),
+(11, 10, '_edit_last', '1'),
+(12, 10, '_wp_page_template', 'default'),
+(13, 10, '_edit_lock', '1454657450:1'),
+(14, 12, '_edit_last', '1'),
+(15, 12, '_wp_page_template', 'default'),
+(16, 12, '_edit_lock', '1454657571:1'),
+(17, 14, '_menu_item_type', 'post_type'),
+(18, 14, '_menu_item_menu_item_parent', '0'),
+(19, 14, '_menu_item_object_id', '10'),
+(20, 14, '_menu_item_object', 'page'),
+(21, 14, '_menu_item_target', ''),
+(22, 14, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(23, 14, '_menu_item_xfn', ''),
+(24, 14, '_menu_item_url', ''),
+(26, 15, '_menu_item_type', 'post_type'),
+(27, 15, '_menu_item_menu_item_parent', '0'),
+(28, 15, '_menu_item_object_id', '8'),
+(29, 15, '_menu_item_object', 'page'),
+(30, 15, '_menu_item_target', ''),
+(31, 15, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(32, 15, '_menu_item_xfn', ''),
+(33, 15, '_menu_item_url', ''),
+(35, 16, '_menu_item_type', 'post_type'),
+(36, 16, '_menu_item_menu_item_parent', '0'),
+(37, 16, '_menu_item_object_id', '6'),
+(38, 16, '_menu_item_object', 'page'),
+(39, 16, '_menu_item_target', ''),
+(40, 16, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(41, 16, '_menu_item_xfn', ''),
+(42, 16, '_menu_item_url', ''),
+(44, 17, '_menu_item_type', 'post_type'),
+(45, 17, '_menu_item_menu_item_parent', '0'),
+(46, 17, '_menu_item_object_id', '4'),
+(47, 17, '_menu_item_object', 'page'),
+(48, 17, '_menu_item_target', ''),
+(49, 17, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(50, 17, '_menu_item_xfn', ''),
+(51, 17, '_menu_item_url', ''),
+(53, 18, '_menu_item_type', 'custom'),
+(54, 18, '_menu_item_menu_item_parent', '0'),
+(55, 18, '_menu_item_object_id', '18'),
+(56, 18, '_menu_item_object', 'custom'),
+(57, 18, '_menu_item_target', ''),
+(58, 18, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(59, 18, '_menu_item_xfn', ''),
+(60, 18, '_menu_item_url', 'http://chickenatiatihan.local/'),
+(62, 19, '_menu_item_type', 'post_type'),
+(63, 19, '_menu_item_menu_item_parent', '0'),
+(64, 19, '_menu_item_object_id', '12'),
+(65, 19, '_menu_item_object', 'page'),
+(66, 19, '_menu_item_target', ''),
+(67, 19, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(68, 19, '_menu_item_xfn', ''),
+(69, 19, '_menu_item_url', ''),
+(71, 1, 'post_views_count', '3');
 
 -- --------------------------------------------------------
 
@@ -309,7 +377,23 @@ CREATE TABLE `wp_posts` (
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (1, 1, '2016-02-05 06:21:17', '2016-02-05 06:21:17', 'Welcome to WordPress. This is your first post. Edit or delete it, then start writing!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2016-02-05 06:21:17', '2016-02-05 06:21:17', '', 0, 'http://chickenatiatihan.local/?p=1', 0, 'post', '', 1),
 (2, 1, '2016-02-05 06:21:17', '2016-02-05 06:21:17', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://chickenatiatihan.local/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'closed', 'open', '', 'sample-page', '', '', '2016-02-05 06:21:17', '2016-02-05 06:21:17', '', 0, 'http://chickenatiatihan.local/?page_id=2', 0, 'page', '', 0),
-(3, 1, '2016-02-05 06:22:30', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2016-02-05 06:22:30', '0000-00-00 00:00:00', '', 0, 'http://chickenatiatihan.local/?p=3', 0, 'post', '', 0);
+(3, 1, '2016-02-05 06:22:30', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2016-02-05 06:22:30', '0000-00-00 00:00:00', '', 0, 'http://chickenatiatihan.local/?p=3', 0, 'post', '', 0),
+(4, 1, '2016-02-05 07:32:43', '2016-02-05 07:32:43', '', 'Gallery', '', 'publish', 'closed', 'closed', '', 'gallery', '', '', '2016-02-05 07:32:43', '2016-02-05 07:32:43', '', 0, 'http://chickenatiatihan.local/?page_id=4', 0, 'page', '', 0),
+(5, 1, '2016-02-05 07:32:43', '2016-02-05 07:32:43', '', 'Gallery', '', 'inherit', 'closed', 'closed', '', '4-revision-v1', '', '', '2016-02-05 07:32:43', '2016-02-05 07:32:43', '', 4, 'http://chickenatiatihan.local/?p=5', 0, 'revision', '', 0),
+(6, 1, '2016-02-05 07:32:51', '2016-02-05 07:32:51', '', 'About', '', 'publish', 'closed', 'closed', '', 'about', '', '', '2016-02-05 07:32:51', '2016-02-05 07:32:51', '', 0, 'http://chickenatiatihan.local/?page_id=6', 0, 'page', '', 0),
+(7, 1, '2016-02-05 07:32:51', '2016-02-05 07:32:51', '', 'About', '', 'inherit', 'closed', 'closed', '', '6-revision-v1', '', '', '2016-02-05 07:32:51', '2016-02-05 07:32:51', '', 6, 'http://chickenatiatihan.local/?p=7', 0, 'revision', '', 0),
+(8, 1, '2016-02-05 07:32:59', '2016-02-05 07:32:59', '', 'Reservation', '', 'publish', 'closed', 'closed', '', 'reservation', '', '', '2016-02-05 07:32:59', '2016-02-05 07:32:59', '', 0, 'http://chickenatiatihan.local/?page_id=8', 0, 'page', '', 0),
+(9, 1, '2016-02-05 07:32:59', '2016-02-05 07:32:59', '', 'Reservation', '', 'inherit', 'closed', 'closed', '', '8-revision-v1', '', '', '2016-02-05 07:32:59', '2016-02-05 07:32:59', '', 8, 'http://chickenatiatihan.local/?p=9', 0, 'revision', '', 0),
+(10, 1, '2016-02-05 07:33:13', '2016-02-05 07:33:13', '', 'Menu', '', 'publish', 'closed', 'closed', '', 'menu', '', '', '2016-02-05 07:33:13', '2016-02-05 07:33:13', '', 0, 'http://chickenatiatihan.local/?page_id=10', 0, 'page', '', 0),
+(11, 1, '2016-02-05 07:33:13', '2016-02-05 07:33:13', '', 'Menu', '', 'inherit', 'closed', 'closed', '', '10-revision-v1', '', '', '2016-02-05 07:33:13', '2016-02-05 07:33:13', '', 10, 'http://chickenatiatihan.local/?p=11', 0, 'revision', '', 0),
+(12, 1, '2016-02-05 07:35:11', '2016-02-05 07:35:11', '', 'Contract', '', 'publish', 'closed', 'closed', '', 'contract', '', '', '2016-02-05 07:35:11', '2016-02-05 07:35:11', '', 0, 'http://chickenatiatihan.local/?page_id=12', 0, 'page', '', 0),
+(13, 1, '2016-02-05 07:33:20', '2016-02-05 07:33:20', '', 'Contract', '', 'inherit', 'closed', 'closed', '', '12-revision-v1', '', '', '2016-02-05 07:33:20', '2016-02-05 07:33:20', '', 12, 'http://chickenatiatihan.local/?p=13', 0, 'revision', '', 0),
+(14, 1, '2016-02-05 07:34:58', '2016-02-05 07:34:58', ' ', '', '', 'publish', 'closed', 'closed', '', '14', '', '', '2016-02-05 07:35:33', '2016-02-05 07:35:33', '', 0, 'http://chickenatiatihan.local/?p=14', 5, 'nav_menu_item', '', 0),
+(15, 1, '2016-02-05 07:34:58', '2016-02-05 07:34:58', ' ', '', '', 'publish', 'closed', 'closed', '', '15', '', '', '2016-02-05 07:35:33', '2016-02-05 07:35:33', '', 0, 'http://chickenatiatihan.local/?p=15', 4, 'nav_menu_item', '', 0),
+(16, 1, '2016-02-05 07:34:57', '2016-02-05 07:34:57', ' ', '', '', 'publish', 'closed', 'closed', '', '16', '', '', '2016-02-05 07:35:33', '2016-02-05 07:35:33', '', 0, 'http://chickenatiatihan.local/?p=16', 3, 'nav_menu_item', '', 0),
+(17, 1, '2016-02-05 07:34:57', '2016-02-05 07:34:57', ' ', '', '', 'publish', 'closed', 'closed', '', '17', '', '', '2016-02-05 07:35:33', '2016-02-05 07:35:33', '', 0, 'http://chickenatiatihan.local/?p=17', 2, 'nav_menu_item', '', 0),
+(18, 1, '2016-02-05 07:34:57', '2016-02-05 07:34:57', '', 'Home', '', 'publish', 'closed', 'closed', '', 'home', '', '', '2016-02-05 07:35:33', '2016-02-05 07:35:33', '', 0, 'http://chickenatiatihan.local/?p=18', 1, 'nav_menu_item', '', 0),
+(19, 1, '2016-02-05 07:35:33', '2016-02-05 07:35:33', ' ', '', '', 'publish', 'closed', 'closed', '', '19', '', '', '2016-02-05 07:35:33', '2016-02-05 07:35:33', '', 0, 'http://chickenatiatihan.local/?p=19', 6, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
@@ -342,7 +426,8 @@ CREATE TABLE `wp_terms` (
 --
 
 INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0);
+(1, 'Uncategorized', 'uncategorized', 0),
+(2, 'Main Menu', 'main-menu', 0);
 
 -- --------------------------------------------------------
 
@@ -361,7 +446,13 @@ CREATE TABLE `wp_term_relationships` (
 --
 
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(14, 2, 0),
+(15, 2, 0),
+(16, 2, 0),
+(17, 2, 0),
+(18, 2, 0),
+(19, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -383,7 +474,8 @@ CREATE TABLE `wp_term_taxonomy` (
 --
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1);
+(1, 1, 'category', '', 0, 1),
+(2, 2, 'nav_menu', '', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -416,9 +508,12 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (11, 1, 'wp_user_level', '10'),
 (12, 1, 'dismissed_wp_pointers', ''),
 (13, 1, 'show_welcome_panel', '1'),
-(14, 1, 'session_tokens', 'a:3:{s:64:"248c62cb793de2d524704a0836ccfc284a65be6eca0477840f7a1dd0c6e53c97";a:4:{s:10:"expiration";i:1454826125;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454653325;}s:64:"de121d15d0078b2e2ab23d8a0e334266c757e4f25756f9b10bef2c6c0756f80c";a:4:{s:10:"expiration";i:1454826773;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454653973;}s:64:"dc7be7691aa869a1f4563c514e12c7f3ca9b17d35c3fb457b6c160165b1c9fe0";a:4:{s:10:"expiration";i:1454827659;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454654859;}}'),
+(14, 1, 'session_tokens', 'a:4:{s:64:"248c62cb793de2d524704a0836ccfc284a65be6eca0477840f7a1dd0c6e53c97";a:4:{s:10:"expiration";i:1454826125;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454653325;}s:64:"de121d15d0078b2e2ab23d8a0e334266c757e4f25756f9b10bef2c6c0756f80c";a:4:{s:10:"expiration";i:1454826773;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454653973;}s:64:"dc7be7691aa869a1f4563c514e12c7f3ca9b17d35c3fb457b6c160165b1c9fe0";a:4:{s:10:"expiration";i:1454827659;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454654859;}s:64:"5409b4e4aa90c4486df69241bb3ba3b8ff655da202ee7ad34767db8e2bc74f53";a:4:{s:10:"expiration";i:1454830249;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36";s:5:"login";i:1454657449;}}'),
 (15, 1, 'wp_dashboard_quick_press_last_post_id', '3'),
-(16, 1, 'wporg_favorites', '');
+(16, 1, 'wporg_favorites', ''),
+(17, 1, 'managenav-menuscolumnshidden', 'a:5:{i:0;s:11:"link-target";i:1;s:11:"css-classes";i:2;s:3:"xfn";i:3;s:11:"description";i:4;s:15:"title-attribute";}'),
+(18, 1, 'metaboxhidden_nav-menus', 'a:4:{i:0;s:19:"add-post-type-cptbc";i:1;s:12:"add-post_tag";i:2;s:15:"add-post_format";i:3;s:21:"add-carousel_category";}'),
+(19, 1, 'nav_menu_recently_edited', '2');
 
 -- --------------------------------------------------------
 
@@ -571,17 +666,17 @@ ALTER TABLE `wp_links`
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 --
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `wp_termmeta`
 --
@@ -591,17 +686,17 @@ ALTER TABLE `wp_termmeta`
 -- AUTO_INCREMENT for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `wp_users`
 --
