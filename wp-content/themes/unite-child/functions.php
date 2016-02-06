@@ -19,9 +19,10 @@ function theme_enqueue_styles()
 //Display social links
 function custom_addon_social(){
     $output = '<div id="social" class="social">';
-    $output .= '<i class="fa fa-home"> P-13 Hagkol, Valencia City </i> ';
+    $output .= '<i class="fa fa-home">P-13 Hagkol, Valencia City  </i> ';
     $output .= '<i class="fa fa-phone-square"> +06064206228/+088 -3150357 </i> ';
-    $output .= '<i class="fa fa-clock-o"> Mon-Sat 8:00AM, Sun 9:00AM </i> ';
+    $output .= '<i class="fa fa-clock-o"> Daily 8:00AM-10PM |</i> ';
+    $output .= 'Follow us ';
     $output .= unite_social_item(of_get_option('social_facebook'), 'Facebook', 'facebook');
     $output .= unite_social_item(of_get_option('social_twitter'), 'Twitter', 'twitter');
     $output .= unite_social_item(of_get_option('social_google'), 'Google Plus', 'google-plus');
