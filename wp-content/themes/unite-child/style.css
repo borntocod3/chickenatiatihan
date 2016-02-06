@@ -1,0 +1,37 @@
+/*
+Theme Name:   Chicken atiatihan
+Theme URI:    http://example.com/chickenatiatihan-unite-child/
+Description:  Chicken atiatihan a child theme from unite
+Author:       Felman
+Author URI:   http://felman.io
+Template:     unite
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  chickenatiatihan-unite-child
+*/
+
+/*Add Custom Styles below */
+
+#secondary {
+    display: none;
+}
+
+#primary {
+    width: 100%;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fec453;
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #22a186;
+}
+
+#btn-book {
+    float: right;
+    margin: 0;
+}
