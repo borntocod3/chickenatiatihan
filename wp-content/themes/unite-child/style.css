@@ -22,6 +22,14 @@ Text Domain:  chickenatiatihan-unite-child
     width: 100%;
 }
 
+.navbar {
+    margin-bottom: 0!important;
+}
+
+.navbar-default{
+    border: none!important;
+}
+
 .navbar-default .navbar-nav>li>a {
     color: #fec453;
     text-transform: uppercase;
@@ -29,6 +37,15 @@ Text Domain:  chickenatiatihan-unite-child
 
 .navbar-default .navbar-nav>li>a:hover {
     color: #22a186;
+}
+
+#content {
+    padding-top: 10px;
+    background: #fec453;
+}
+
+#colophon{
+    margin-top: 0;
 }
 
 #btn-book {

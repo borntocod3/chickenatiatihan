@@ -79,6 +79,8 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', false);
 
+define( 'JETPACK_DEV_DEBUG', true);
+
 // define('FS_METHOD','direct');
 
 /* That's all, stop editing! Happy blogging. */
