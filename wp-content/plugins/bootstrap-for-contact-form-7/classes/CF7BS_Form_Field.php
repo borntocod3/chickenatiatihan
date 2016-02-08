@@ -1,7 +1,7 @@
 <?php
 /**
  * @package CF7BS
- * @version 1.3.0
+ * @version 1.3.1
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
  */
 
@@ -140,13 +140,17 @@ class CF7BS_Form_Field extends CF7BS_Component {
 						if ( false === strpos( $title, 'wpcf7-free-text' ) ) {
 							$title = esc_html( $title );
 						}
+
 						$output .= '<div class="checkbox' . $wrapper_class . '">';
-						$output .= '<label>';
+						$output .= '<label '. ( ! empty( $id ) ? ' for="' . esc_attr( $id ) . '"' : '' ) .'>' ;
 						$output .= '<input' . $input_class . ( ! empty( $id ) ? ' id="' . esc_attr( $id ) . '"' : '' ) . ' name="' . esc_attr( $name ) . '" type="checkbox" value="' . esc_attr( $curval ) . '"' . cf7bs_checked( $value, $curval, false ) . ( is_int( $tabindex ) ? ' tabindex="' . $tabindex . '"' : '' ) . $append . '>';
 						$output .= $title;
 						$output .= '</label>';
 						$output .= '</div>';
 					} else {
+						if ( defined( 'CF7BS_FIELDSET_WRAP' ) && CF7BS_FIELDSET_WRAP ) {
+							$output .= '<fieldset>';
+						}
 						if ( 'buttons' == $group_layout ) {
 							$button_group = new CF7BS_Button_Group( array(
 								'mode'		=> 'checkbox',
@@ -158,7 +162,7 @@ class CF7BS_Form_Field extends CF7BS_Component {
 								$is_checked = cf7bs_multiple_checked( $value, $curval, false );
 								$output .= $button_group->insert_button( array(
 									'type'		=> $group_type,
-									'id'		=> $id . ( $counter + 1 ),
+									'id'		=> ! empty( $id ) ? $id . ( $counter + 1 ) : '',
 									'name'		=> $name . '[]',
 									'class'		=> $class,
 									'value'		=> $curval,
@@ -174,7 +178,7 @@ class CF7BS_Form_Field extends CF7BS_Component {
 								if ( false === strpos( $title, 'wpcf7-free-text' ) ) {
 									$title = esc_html( $title );
 								}
-								$output .= '<label class="checkbox-inline">';
+								$output .= '<label class="checkbox-inline" ' . ( ! empty( $id ) ? ' for="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) .'>';
 								$output .= '<input' . $input_class . ( ! empty( $id ) ? ' id="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . ' name="' . esc_attr( $name . '[]' ) . '" type="checkbox" value="' . esc_attr( $curval ) . '"' . cf7bs_multiple_checked( $value, $curval, false ) . ( $tabindex >= 0 ? ' tabindex="' . ( $tabindex + $counter ) . '"' : '' ) . $append . '>';
 								$output .= $title;
 								$output .= '</label>';
@@ -187,13 +191,16 @@ class CF7BS_Form_Field extends CF7BS_Component {
 									$title = esc_html( $title );
 								}
 								$output .= '<div class="checkbox">';
-								$output .= '<label>';
+								$output .= '<label ' . ( ! empty( $id ) ? ' for="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . '>';
 								$output .= '<input' . $input_class . ( ! empty( $id ) ? ' id="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . ' name="' . esc_attr( $name . '[]' ) . '" type="checkbox" value="' . esc_attr( $curval ) . '"' . cf7bs_multiple_checked( $value, $curval, false ) . ( is_int( $tabindex ) ? ' tabindex="' . ( $tabindex + $counter ) . '"' : '' ) . $append . '>';
 								$output .= $title;
 								$output .= '</label>';
 								$output .= '</div>';
 								$counter++;
 							}
+						}
+						if ( defined( 'CF7BS_FIELDSET_WRAP' ) && CF7BS_FIELDSET_WRAP ) {
+							$output .= '</fieldset>';
 						}
 					}
 					break;
@@ -219,12 +226,15 @@ class CF7BS_Form_Field extends CF7BS_Component {
 							$title = esc_html( $title );
 						}
 						$output .= '<div class="radio' . $wrapper_class . '">';
-						$output .= '<label>';
+						$output .= '<label ' . ( ! empty( $id ) ? ' for="' . esc_attr( $id ) . '"' : '' ) . '>';
 						$output .= '<input' . $input_class . ( ! empty( $id ) ? ' id="' . esc_attr( $id ) . '"' : '' ) . ' name="' . esc_attr( $name ) . '" type="radio" value="' . esc_attr( $curval ) . '"' . cf7bs_checked( $value, $curval, false ) . ( is_int( $tabindex ) ? ' tabindex="' . $tabindex . '"' : '' ) . $append . '>';
 						$output .= $title;
 						$output .= '</label>';
 						$output .= '</div>';
 					} else {
+						if ( defined( 'CF7BS_FIELDSET_WRAP' ) && CF7BS_FIELDSET_WRAP ) {
+							$output .= '<fieldset>';
+						}
 						if ( 'buttons' == $group_layout ) {
 							$button_group = new CF7BS_Button_Group( array(
 								'mode'		=> 'radio',
@@ -236,7 +246,7 @@ class CF7BS_Form_Field extends CF7BS_Component {
 								$is_checked = cf7bs_checked( $value, $curval, false );
 								$output .= $button_group->insert_button( array(
 									'type'		=> $group_type,
-									'id'		=> $id . ( $counter + 1 ),
+									'id'		=> ! empty( $id ) ? $id . ( $counter + 1 ) : '',
 									'name'		=> $name,
 									'class'		=> $class,
 									'value'		=> $curval,
@@ -252,7 +262,7 @@ class CF7BS_Form_Field extends CF7BS_Component {
 								if ( false === strpos( $title, 'wpcf7-free-text' ) ) {
 									$title = esc_html( $title );
 								}
-								$output .= '<label class="radio-inline">';
+								$output .= '<label class="radio-inline"' . ( ! empty( $id ) ? ' for="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . '>';
 								$output .= '<input' . $input_class . ( ! empty( $id ) ? ' id="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . ' name="' . esc_attr( $name ) . '" type="radio" value="' . esc_attr( $curval ) . '"' . cf7bs_checked( $value, $curval, false ) . ( $tabindex >= 0 ? ' tabindex="' . ( $tabindex + $counter ) . '"' : '' ) . $append . '>';
 								$output .= $title;
 								$output .= '</label>';
@@ -265,13 +275,16 @@ class CF7BS_Form_Field extends CF7BS_Component {
 									$title = esc_html( $title );
 								}
 								$output .= '<div class="radio">';
-								$output .= '<label>';
+								$output .= '<label' . ( ! empty( $id ) ? ' for="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . '>';
 								$output .= '<input' . $input_class . ( ! empty( $id ) ? ' id="' . esc_attr( $id . ( $counter + 1 ) ) . '"' : '' ) . ' name="' . esc_attr( $name ) . '" type="radio" value="' . esc_attr( $curval ) . '"' . cf7bs_checked( $value, $curval, false ) . ( is_int( $tabindex ) ? ' tabindex="' . ( $tabindex + $counter ) . '"' : '' ) . $append . '>';
 								$output .= $title;
 								$output .= '</label>';
 								$output .= '</div>';
 								$counter++;
 							}
+						}
+						if ( defined( 'CF7BS_FIELDSET_WRAP' ) && CF7BS_FIELDSET_WRAP ) {
+							$output .= '</fieldset>';
 						}
 					}
 					break;

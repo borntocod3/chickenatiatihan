@@ -49,3 +49,13 @@ function register_my_menus() {
     );
 }
 add_action( 'init', 'register_my_menus' );
+
+function pdf_shortcode_handler($atts, $content = null){
+    $uploads = wp_upload_dir();
+    $upload_path = $uploads['baseurl'];
+    $file_path= '/2016/02/Menu.pdf';
+    $output = '<a href="'.$upload_path.$file_path.'" target="blank">'.$content.'</a>';
+
+    return $output;
+}
+add_shortcode('pdf','pdf_shortcode_handler');
