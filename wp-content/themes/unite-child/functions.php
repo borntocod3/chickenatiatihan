@@ -5,6 +5,23 @@
  * v1.0.
  */
 
+
+include "includes/custom-post-type/event.php";
+include "includes/custom-meta-box/events-meta-box.php";
+
+function fisa_admin_styles_and_scripts($hook){
+    /**
+     * Add The script on post.php and post-new.php only.
+     */
+    if(('post-new.php' == $hook || 'post.php' == $hook )){
+        wp_enqueue_style("eventlist-datetimepicker-css", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.css");
+        wp_enqueue_script("eveentlist-datetimepicker-js", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.full.js", array("jquery"));
+        wp_enqueue_script("eveentlist-datefrom-and-to-js", get_stylesheet_directory_uri()."/library/datetimepicker/datefrom-dateto.js", array("jquery"));
+    }
+}
+add_action('admin_enqueue_scripts','fisa_admin_styles_and_scripts');
+
+
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
 function theme_enqueue_styles()
