@@ -56,3 +56,23 @@ Text Domain:  chickenatiatihan-unite-child
 .required {
     color: #ff0000;
 }
+
+#gallery-images > div > div > div > div > a >img {
+    -webkit-transition: all 0.20s linear;
+    -moz-transition: all 0.20s linear;
+    -o-transition: all 0.20s linear;
+    -ms-transition: all 0.20s linear;
+    transition: all 0.20s linear;
+}
+
+#gallery-images > div > div > div > div > a >img:hover {
+    -webkit-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+}
+
+.tiled-gallery .tiled-gallery-item {
+    overflow: hidden;
+}

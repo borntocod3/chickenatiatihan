@@ -33,6 +33,11 @@ function theme_enqueue_styles()
     wp_enqueue_style($parent_style, get_bloginfo('template_directory') . '/style.css');
     wp_enqueue_style('child-style', get_bloginfo('stylesheet_directory'). '/style.css', array($parent_style));
     echo '<link rel="shortcut icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/images/favicon.png" />';
+    /*
+       Bootstrap
+   */
+    wp_enqueue_style("bootstrap", get_stylesheet_directory_uri()."/library/bootstrap/css/bootstrap.css");
+    wp_enqueue_script("bootstrap", get_stylesheet_directory_uri()."/library/bootstrap/js/bootstrap.js");
 
     /*
         Date time picker assets
