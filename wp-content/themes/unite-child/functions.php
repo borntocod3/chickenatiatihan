@@ -5,6 +5,25 @@
  * v1.0.
  */
 
+
+// include "includes/custom-post-type/event.php";
+// include "includes/custom-meta-box/events-meta-box.php";
+
+include "includes/custom-post-type/reservation.php";
+
+function fisa_admin_styles_and_scripts($hook){
+    /**
+     * Add The script on post.php and post-new.php only.
+     */
+    if(('post-new.php' == $hook || 'post.php' == $hook )){
+        wp_enqueue_style("eventlist-datetimepicker-css", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.css");
+        wp_enqueue_script("eveentlist-datetimepicker-js", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.full.js", array("jquery"));
+        wp_enqueue_script("eveentlist-datefrom-and-to-js", get_stylesheet_directory_uri()."/library/datetimepicker/datefrom-dateto.js", array("jquery"));
+    }
+}
+add_action('admin_enqueue_scripts','fisa_admin_styles_and_scripts');
+
+
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
 function theme_enqueue_styles()
@@ -14,6 +33,21 @@ function theme_enqueue_styles()
     wp_enqueue_style($parent_style, get_bloginfo('template_directory') . '/style.css');
     wp_enqueue_style('child-style', get_bloginfo('stylesheet_directory'). '/style.css', array($parent_style));
     echo '<link rel="shortcut icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/images/favicon.png" />';
+
+    /*
+        Date time picker assets
+    */
+    wp_enqueue_style("ca-datetimepicker-css", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.css");
+    // wp_enqueue_style("ca-datetimepicker-css", get_stylesheet_directory_uri()."/library/datetimepicker/bootstrap-datetimepicker.min.css");
+    wp_enqueue_script("ca-datetimepicker-js", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.full.js", array("jquery"));
+    wp_enqueue_script("ca-datefrom-and-to-js", get_stylesheet_directory_uri()."/library/datetimepicker/datefrom-dateto.js", array("jquery"));
+
+    /*
+        Multi select assets
+    */
+    wp_enqueue_style("ca-multiselect-css", get_stylesheet_directory_uri()."/library/multiselect/bootstrap-multiselect.css");
+    wp_enqueue_script("ca-multiselect-js", get_stylesheet_directory_uri()."/library/multiselect/bootstrap-multiselect.js", array("jquery"));
+    wp_enqueue_script("ca-multiselect-custom-js", get_stylesheet_directory_uri()."/library/multiselect/ca_multi-select-custom.js", array("jquery"));
 }
 
 //Display social links
@@ -58,4 +92,11 @@ function pdf_shortcode_handler($atts, $content = null){
 
     return $output;
 }
+
 add_shortcode('pdf','pdf_shortcode_handler');
+
+function reservation_init_func( $atts ) {
+    require_once 'includes/reservation/ca-reservation-form.php';
+   
+}
+add_shortcode( 'reservation_init', 'reservation_init_func' );
