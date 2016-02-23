@@ -1,3 +1,2 @@
 <?php
-$output = "<h3>Content Under Constuction!</h3>";
-echo $output;
+echo do_shortcode("[pt_view id='d367eef13f']");

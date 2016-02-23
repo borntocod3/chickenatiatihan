@@ -76,3 +76,28 @@ Text Domain:  chickenatiatihan-unite-child
 .tiled-gallery .tiled-gallery-item {
     overflow: hidden;
 }
+
+.p-title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#pt-cv-view-da7959e6f2 > div > div > div > a,
+#pt-cv-view-d367eef13f > div > div > div > a {
+    background-color: #3c2b3d;
+    border-color: #3c2b3d;
+}
+
+#pt-cv-view-da7959e6f2 > div > div > div > a:hover
+#pt-cv-view-d367eef13f > div > div > div > a:hover{
+    background-color: #2E202F;
+    border-color: #2E202F;
+}
+
+.entry-content {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+
+.nav-links, .entry-meta {
+    display: none;
+}
