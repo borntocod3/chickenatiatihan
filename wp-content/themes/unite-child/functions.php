@@ -79,6 +79,9 @@ function custom_addon_social(){
     echo $output;
 }
 
+/**
+ * Register Menu
+ */
 function register_my_menus() {
     register_nav_menus(
         array(
@@ -97,11 +100,135 @@ function pdf_shortcode_handler($atts, $content = null){
 
     return $output;
 }
-
 add_shortcode('pdf','pdf_shortcode_handler');
 
 function reservation_init_func( $atts ) {
+
+    echo '<form method="post">';
     require_once 'includes/reservation/ca-reservation-form.php';
-   
+    echo '</form>';
+
 }
 add_shortcode( 'reservation_init', 'reservation_init_func' );
+
+/**
+ * function to save the reservation data
+ * @param null
+ */
+function save_reservation_data(){
+     $post_m = get_post_meta(126, 'ca_reservate_meta_data', true);
+    echo '<pre>';print_r($post_m);echo '</pre>';
+    if(isset($_POST['ca_reservation_nonce'])){
+        $nonce = $_POST['ca_reservation_nonce'];
+
+        //format date like mysql datetime format
+        $_POST['ca_date'] = date('Y-m-d h:i:s',strtotime($_POST['ca_date']));
+
+        //check if nonce is verified
+        if(wp_verify_nonce($nonce,'ca_reservation_data')){
+
+                $reservation_args = array(
+                    'post_title'    => $_POST['ca_venue'],
+                    'post_status'   => 'Pending',
+                    'post_type'     => 'reservation',
+                    'post_content'  => $_POST['ca_notes'],
+                    'post_date'     => $_POST['ca_date'],
+                );
+
+                /**
+                 * wp_insert_post returns the id of the inserted post else return value is 0
+                 */
+                $insert_id =  wp_insert_post($reservation_args);
+
+                //Check if insert is successful
+                if(0 != $insert_id){
+                    /**
+                     * Reservation Post Data array
+                     */
+                    $reservation_post_meta = array(
+                            'num_heads'  => $_POST['ca_num_of_heads'],
+                            'email'         => $_POST['ca_email'],
+                            'ca_contact_no' => $_POST['ca_contact_no'],
+                            'ca_specialty'  => json_encode($_POST['ca_specialty'])
+                    );
+                    /**
+                     * update_post_meta inserts data if its not available and
+                     * update the data if it exists
+                     */
+                    update_post_meta($insert_id, 'ca_reservate_meta_data',$reservation_post_meta);
+                }
+        }
+    }
+}
+add_action('wp','save_reservation_data');
+
+/**
+ * Modify default wordpress table list for reservation post type
+ * @param null
+ */
+function set_reservation_custom_columns_filter( $columns ) {
+    //Add custom columns
+    $columns['no_of_heads']     = '# of Heads';
+    $columns['email']           = 'Email';
+    $columns['contact_no']      = 'Contact No';
+    $columns['specialty']       = 'Specialty';
+    $columns['title']           = 'Venue';
+    $columns['content']         = 'Notes';
+    $columns['action']          = 'Action';
+
+    //unset default columns like title and comments
+    unset($columns['comments']);
+
+    return $columns;
+}
+add_filter( 'manage_reservation_posts_columns', 'set_reservation_custom_columns_filter', 10, 1 );
+
+/**
+ * Show the data of a custom columns
+ */
+function show_custom_columns_data($column, $post_id){
+    $reservation_meta_data = get_post_meta($post_id, 'ca_reservate_meta_data', true);
+
+    switch ($column) {
+        case 'no_of_heads':
+                echo $reservation_meta_data['num_heads'];
+            break;
+
+        case 'email':
+                echo  $reservation_meta_data['email'];
+            break;
+        case 'contact_no':
+                echo $reservation_meta_data['ca_contact_no'];
+            break;
+        case 'specialty':
+                echo $reservation_meta_data['ca_specialty'];
+            break;
+
+        case 'content':
+                echo apply_filters('the_content',get_post_field('post_content', $post_id));
+            break;
+
+        case 'action':
+            break;
+
+    }
+}
+add_action( 'manage_reservation_posts_custom_column' , 'show_custom_columns_data', 10, 2 );
+
+/**
+ * Remove edit, quick edit, trash and view
+ */
+function reservation_remove_action_rows( $actions, $post){
+    global $current_screen;
+    /**
+     * If post screen is not reservation then just return $actions variable
+     */
+    if('reservation' != $current_screen->post_type) return $actions;
+
+    unset( $actions['edit'] );
+    unset( $actions['view'] );
+    unset( $actions['trash'] );
+    unset( $actions['inline hide-if-no-js'] );
+    return $actions;
+}
+add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
