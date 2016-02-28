@@ -27,7 +27,7 @@
 	</div>
 
 	<div class="row">
-       
+
     </div>
 
     <div class="row">
@@ -54,34 +54,49 @@
                 <input name='ca_venue' type='text'  value="" class="form-control" />
             </div>
         </div>
+        <?php
 
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label>Specialty</label><br/>
-	       		<select name='ca_specialty[]' class="ca_multi-select form-control"  multiple="multiple">
-				    <option value="cheese">Cheese</option>
-				    <option value="tomatoes">Tomatoes</option>
-				    <option value="mozarella">Mozzarella</option>
-				    <option value="mushrooms">Mushrooms</option>
-				    <option value="pepperoni">Pepperoni</option>
-				    <option value="onions">Onions</option>
-				    <option value="cheese">Cheese</option>
-				    <option value="tomatoes">Tomatoes</option>
-				    <option value="mozarella">Mozzarella</option>
-				    <option value="mushrooms">Mushrooms</option>
-				    <option value="pepperoni">Pepperoni</option>
-				    <option value="onions">Onions</option>
-				</select>
-			</div>
-       </div>
+                    $args = array(
+                        'type'                     => 'reservation',
+                        'taxonomy'                 => 'reservation_category',//the specialty category
+                        'hide_empty'               => false
 
-        
+                    );
+                    /**
+                     * Get the category specialty
+                     */
+                    $categories = get_categories( $args );
+
+                    /**
+                     * Check if category is not empty 
+                     * if its not empty then we will show it the the end user
+                     * else we should not let end user see it.
+                     */
+                    if(!empty($categories)){
+
+                        ?>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Specialty</label><br/>
+                                <select name='ca_specialty[]' class="ca_multi-select form-control"  multiple="multiple">
+                                <?php
+                                    foreach ($categories as $category) {
+                                        ?><option value="<?php echo $category->term_id; ?>"><?php echo $category->name;?></option><?php
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                       </div>
+                        <?php
+                    }
+
+        ?>
     </div>
 
     <div class="row">
 		<div class='col-sm-3'><label>Notes</label>
             <div class="form-group">
-            	
+
                 <textarea name='ca_notes' class="form-control"></textarea> 
             </div>
         </div>

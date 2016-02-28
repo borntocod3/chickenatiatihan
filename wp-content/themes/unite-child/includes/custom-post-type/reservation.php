@@ -34,7 +34,7 @@ function ca_reservation_init(){
         'query_var'             => true,
         'rewrite'               => array( 'slug' => 'reservation' ),
         // 'capability_type'       => 'post',
-        // 'capabilities'          => array('create_posts'=> false),
+        'capabilities'          => array('create_posts'=> false),
         'has_archive'           => true,
         'hierarchical'          => false,
         'menu_position'         => 6,

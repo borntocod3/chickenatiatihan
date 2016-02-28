@@ -116,8 +116,7 @@ add_shortcode( 'reservation_init', 'reservation_init_func' );
  * @param null
  */
 function save_reservation_data(){
-     $post_m = get_post_meta(126, 'ca_reservate_meta_data', true);
-    echo '<pre>';print_r($post_m);echo '</pre>';
+
     if(isset($_POST['ca_reservation_nonce'])){
         $nonce = $_POST['ca_reservation_nonce'];
 
@@ -148,14 +147,22 @@ function save_reservation_data(){
                     $reservation_post_meta = array(
                             'num_heads'  => $_POST['ca_num_of_heads'],
                             'email'         => $_POST['ca_email'],
-                            'ca_contact_no' => $_POST['ca_contact_no'],
-                            'ca_specialty'  => json_encode($_POST['ca_specialty'])
+                            'ca_contact_no' => $_POST['ca_contact_no']
                     );
+
                     /**
                      * update_post_meta inserts data if its not available and
                      * update the data if it exists
                      */
                     update_post_meta($insert_id, 'ca_reservate_meta_data',$reservation_post_meta);
+
+                    /**
+                     * Set post category
+                     * Reference http://codex.wordpress.org/Function_Reference/wp_set_object_terms
+                     */
+                    $cat_ids = array_map('intval',$_POST['ca_specialty']);
+                    $cat_ids = array_unique($cat_ids);
+                    wp_set_object_terms($insert_id, $cat_ids, 'reservation_category');
                 }
         }
     }
@@ -201,7 +208,17 @@ function show_custom_columns_data($column, $post_id){
                 echo $reservation_meta_data['ca_contact_no'];
             break;
         case 'specialty':
-                echo $reservation_meta_data['ca_specialty'];
+
+                $categories = get_the_terms($post_id,'reservation_category');
+                if(!empty($categories)){
+                    $category_names = array();
+
+                    foreach ($categories as $category) {
+                       $category_names[]  = $category->name;
+                    }
+                    echo join(',', $category_names);
+                }
+
             break;
 
         case 'content':
@@ -231,4 +248,4 @@ function reservation_remove_action_rows( $actions, $post){
     unset( $actions['inline hide-if-no-js'] );
     return $actions;
 }
-add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
+// add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
