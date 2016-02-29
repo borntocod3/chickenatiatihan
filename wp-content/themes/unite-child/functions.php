@@ -116,6 +116,7 @@ add_shortcode( 'reservation_init', 'reservation_init_func' );
  * @param null
  */
 function save_reservation_data(){
+    global $wpdb;
 
     if(isset($_POST['ca_reservation_nonce'])){
         $nonce = $_POST['ca_reservation_nonce'];
@@ -127,7 +128,7 @@ function save_reservation_data(){
         if(wp_verify_nonce($nonce,'ca_reservation_data')){
 
                 $reservation_args = array(
-                    'post_title'    => $_POST['ca_venue'],
+                    'post_title'    => $_POST['ca_event_name'],
                     'post_status'   => 'Pending',
                     'post_type'     => 'reservation',
                     'post_content'  => $_POST['ca_notes'],
@@ -147,7 +148,8 @@ function save_reservation_data(){
                     $reservation_post_meta = array(
                             'num_heads'  => $_POST['ca_num_of_heads'],
                             'email'         => $_POST['ca_email'],
-                            'ca_contact_no' => $_POST['ca_contact_no']
+                            'ca_contact_no' => $_POST['ca_contact_no'],
+                            'ca_venue'=> $_POST['ca_venue']
                     );
 
                     /**
@@ -163,6 +165,8 @@ function save_reservation_data(){
                     $cat_ids = array_map('intval',$_POST['ca_specialty']);
                     $cat_ids = array_unique($cat_ids);
                     wp_set_object_terms($insert_id, $cat_ids, 'reservation_category');
+
+                    $wpdb->update($wpdb->posts,array('post_status'=> 'publish'), array('id'=>$insert_id));
                 }
         }
     }
@@ -179,7 +183,8 @@ function set_reservation_custom_columns_filter( $columns ) {
     $columns['email']           = 'Email';
     $columns['contact_no']      = 'Contact No';
     $columns['specialty']       = 'Specialty';
-    $columns['title']           = 'Venue';
+    $columns['title']           = 'Event Name';
+    $columns['venue']           = 'Venue';
     $columns['content']         = 'Notes';
     $columns['action']          = 'Action';
 
@@ -224,6 +229,8 @@ function show_custom_columns_data($column, $post_id){
         case 'content':
                 echo apply_filters('the_content',get_post_field('post_content', $post_id));
             break;
+        case 'venue';
+                echo $reservation_meta_data['ca_venue'];
 
         case 'action':
             break;
@@ -249,3 +256,4 @@ function reservation_remove_action_rows( $actions, $post){
     return $actions;
 }
 // add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
+
