@@ -8,8 +8,10 @@
 
 // include "includes/custom-post-type/event.php";
 // include "includes/custom-meta-box/events-meta-box.php";
+include_once "includes/custom-post-type/product.php";
+include_once "includes/custom-meta-box/product-meta-box.php";
+include_once "includes/custom-post-type/reservation.php";
 
-include "includes/custom-post-type/reservation.php";
 
 function fisa_admin_styles_and_scripts($hook){
     /**
