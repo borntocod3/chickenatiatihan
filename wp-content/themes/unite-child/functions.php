@@ -168,6 +168,9 @@ function save_reservation_data(){
                     $cat_ids = array_unique($cat_ids);
                     wp_set_object_terms($insert_id, $cat_ids, 'reservation_category');
 
+                    require_once 'printable_reservation.php';
+                    exit;
+
                 }
         }
     }
