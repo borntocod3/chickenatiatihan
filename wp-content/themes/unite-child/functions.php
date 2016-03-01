@@ -168,7 +168,6 @@ function save_reservation_data(){
                     $cat_ids = array_unique($cat_ids);
                     wp_set_object_terms($insert_id, $cat_ids, 'reservation_category');
 
-                    $wpdb->update($wpdb->posts,array('post_status'=> 'publish'), array('id'=>$insert_id));
                 }
         }
     }
@@ -188,7 +187,7 @@ function set_reservation_custom_columns_filter( $columns ) {
     $columns['title']           = 'Event Name';
     $columns['venue']           = 'Venue';
     $columns['content']         = 'Notes';
-    $columns['action']          = 'Action';
+    $columns['ca_action']          = 'Action';
 
     //unset default columns like title and comments
     unset($columns['comments']);
@@ -234,7 +233,17 @@ function show_custom_columns_data($column, $post_id){
         case 'venue';
                 echo $reservation_meta_data['ca_venue'];
 
-        case 'action':
+            break;
+        case 'ca_action':
+            $status = get_post_status($post_id);
+            if('publish' != $status){
+                $nonce  = wp_create_nonce('ca_update_reservation');
+                $link   = admin_url('admin-ajax.php?action=update_reservation_status_and_send_email&post_id='.$post_id.'&rca_nonce='.$nonce);
+                echo '<a href="',$link,'"> Confirm</a>';
+            }else {
+                echo 'Confirmed';
+            }
+
             break;
 
     }
@@ -257,5 +266,50 @@ function reservation_remove_action_rows( $actions, $post){
     unset( $actions['inline hide-if-no-js'] );
     return $actions;
 }
-// add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
+add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
+
+/**
+ * Update the reservation to published and send email to the client
+ */
+function update_reservation_status_and_send_email(){
+
+    if(!wp_verify_nonce($_REQUEST['rca_nonce'], 'ca_update_reservation')){
+        //do not do anything if the nonce is not verified
+        die();
+    }
+
+    if(!isset($_REQUEST['post_id'])){
+        //do not do anything
+        die();
+    }
+    //get the reference of the reservation
+    $post_id = $_REQUEST["post_id"];
+
+    /**
+     * Update the status of the reservation details
+     */
+    $update_status = wp_update_post(array(
+                        'ID'            => $post_id,
+                        'post_status'   => 'publish'
+                     ));
+    if(0 != $update_status){
+
+        $post_meta = get_post_meta($post_id, 'ca_reservate_meta_data', true);
+
+        //get the email
+        $email = $post_meta['email'];
+        /**
+         * Setup email then use wp_mail to send the email
+         */
+        //wp_mail()
+        //After email is end rediret to the reservation list
+         $reservation_admin_url = admin_url('edit.php?post_type=reservation');
+         header("Location: ".$reservation_admin_url);
+    }
+
+    die();
+}
+add_action('wp_ajax_update_reservation_status_and_send_email','update_reservation_status_and_send_email');
+
+
 

@@ -35,6 +35,7 @@ function ca_reservation_init(){
         'rewrite'               => array( 'slug' => 'reservation' ),
         // 'capability_type'       => 'post',
         'capabilities'          => array('create_posts'=> false),
+        'map_meta_cap'          => true,
         'has_archive'           => true,
         'hierarchical'          => false,
         'menu_position'         => 6,
