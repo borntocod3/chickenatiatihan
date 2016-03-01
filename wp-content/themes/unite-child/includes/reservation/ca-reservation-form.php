@@ -61,9 +61,9 @@
         <?php
 
                     $args = array(
-                        'type'                     => 'reservation',
-                        'taxonomy'                 => 'reservation_category',//the specialty category
-                        'hide_empty'               => false
+                        'type'                     => 'ca_product',
+                        'taxonomy'                 => 'products_category',//the specialty category
+                        'hide_empty'               => true
 
                     );
                     /**
@@ -81,11 +81,39 @@
                         ?>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label>Specialty</label><br/>
+                                <label>Product</label><br/>
                                 <select name='ca_specialty[]' class="ca_multi-select form-control"  multiple="multiple">
                                 <?php
                                     foreach ($categories as $category) {
-                                        ?><option value="<?php echo $category->term_id; ?>"><?php echo $category->name;?></option><?php
+
+                                        $args = array(
+                                            'post_type' => 'ca_product',
+                                            'tax_query' => array(
+                                                array(
+                                                    'taxonomy'  => 'products_category',
+                                                    'field'     => 'id',
+                                                    'terms'     => $category->term_id
+                                                )
+                                            )
+                                        );
+
+                                        $products = new WP_Query( $args );
+                                        $products = $products->posts;
+            
+                                        ?>
+                                        <optgroup label="<?php echo $category->name;?>">
+                                        <?php 
+                                            foreach ($products as $product) { ?>
+
+                                                <option value="<?php echo $product->ID; ?>">
+                                                    <?php echo $product->post_title; ?>
+                                                </option>
+
+                                            <?php }
+
+                                        ?>
+                                        </optgroup><?php
+
                                     }
                                 ?>
                                 </select>
