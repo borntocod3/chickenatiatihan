@@ -68,7 +68,7 @@
                         ?>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Product</label><br/>
+                                <label>Food Tray</label><br/>
                                 <select name='ca_specialty[]' class="ca_multi-select form-control"  multiple="multiple">
                                 <?php
                                     foreach ($categories as $category) {
