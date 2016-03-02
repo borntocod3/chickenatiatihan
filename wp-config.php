@@ -81,6 +81,8 @@ define('WP_DEBUG', false);
 
 define( 'JETPACK_DEV_DEBUG', true);
 
+define('WP_ACCESSIBLE_HOSTS', 'www.googleapis.com, login.live.com, api.login.yahoo.com');
+
 // define('FS_METHOD','direct');
 
 /* That's all, stop editing! Happy blogging. */
