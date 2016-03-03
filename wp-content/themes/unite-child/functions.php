@@ -114,6 +114,14 @@ function reservation_init_func( $atts ) {
 add_shortcode( 'reservation_init', 'reservation_init_func' );
 
 /**
+ * Set content type as html
+ */
+function ca_set_content_type(){
+    return "text/html";
+}
+add_filter( 'wp_mail_content_type','ca_set_content_type' );
+
+/**
  * function to save the reservation data
  * @param null
  */
@@ -155,7 +163,88 @@ function save_reservation_data(){
                             'ca_food_tray_ids' => $_POST['ca_specialty'],
                             'ca_name'   => $_POST['ca_name']
                     );
+                    /**
+                     * Start Send Email
+                     */
+                    $products_str = '';
+                    if(!empty($reservation_post_meta['ca_food_tray_ids'])){
+                        foreach ($reservation_post_meta['ca_food_tray_ids'] as $product_id) {
+                                $post = get_post($product_id);
+                                $product_link = get_edit_post_link($product_id);
+                                $product_name  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
+                                $products_str .='<tr>
+                                                    <td>'.$post->post_title.'</td>
+                                                </tr>';
+                        }
+                    }
 
+                    $html_message = 'Dear '.$reservation_post_metap['ca_name'].',<br/>
+                                        <p>
+                                            Thank you for choosing us to host your special event. 
+                                            Details of your reservation are described below for your reference.
+                                        </p>
+
+                                        <h2>Reservation Details</h2>
+                                        <p>Date:'.$reservation_args['post_date'].'</p>
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr><th colspan="2">'.$reservation_args['post_title'].'</th></tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>Name</td>
+                                                <td>'.$reservation_post_meta['ca_name'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Email</td>
+                                                <td>'. $reservation_post_meta['email'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Number of heads</td>
+                                                <td>'. $reservation_post_meta['num_heads'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Contact No.</td>
+                                                <td>'. $reservation_post_meta['ca_contact_no'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Venue</td>
+                                                <td>'. $reservation_post_meta['ca_venue'].'</td>
+                                              </tr>
+
+                                               <tr>
+                                                <td>Notes</td>
+                                                <td>'. $reservation_args['post_content'].'</td>
+                                              </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr><th colspan="2">Food Tray</th></tr>
+                                            </thead>
+                                            <tbody>'. $products_str .'</tbody>
+                                        </table>
+                                        <p>
+                                            We aim to exceed your expectations and to handle the details for you, leaving you to enjoy your time with us.
+
+                                            <br/>Sincerely,<br/>
+
+                                            Chickent atitihan management
+
+                                        </p>
+                                    ';
+                    wp_mail( $_POST['ca_email'], 'Reservation Confirmed', $html_message );
+                    /**
+                     * End Send Email
+                     */
+                    
                     /**
                      * update_post_meta inserts data if its not available and
                      * update the data if it exists
