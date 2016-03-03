@@ -33,7 +33,7 @@ function theme_enqueue_styles()
     $parent_style = 'parent-style';
 
     wp_enqueue_style($parent_style, get_bloginfo('template_directory') . '/style.css');
-    wp_enqueue_style('child-style', get_bloginfo('stylesheet_directory'). '/style.css', array($parent_style));
+//    wp_enqueue_style('child-style', get_bloginfo('stylesheet_directory'). '/style.css', array($parent_style));
     echo '<link rel="shortcut icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/images/favicon.png" />';
     /*
        Bootstrap

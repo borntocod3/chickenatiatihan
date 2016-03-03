@@ -27,6 +27,4 @@ echo do_shortcode('[image-carousel twbs="3"]');?>
         ?>
     </main><!-- #main -->
 </div><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
