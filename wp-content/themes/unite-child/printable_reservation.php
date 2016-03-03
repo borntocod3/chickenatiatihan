@@ -1,7 +1,3 @@
-<?php 
-	print_r($reservation_args);
-	print_r( $reservation_post_meta);
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,42 +6,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $reservation_args['post_title'];?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri().'/library/bootstrap/css/bootstrap.css'; ?>">
-
+	<style type="text/css">
+		@media print{
+			#btn-actions-container{
+				display: none;
+			}
+		}
+	</style>
 </head>
 <body>
 
 	<div class="col-md-2">&nbsp;</div>
 	<div class="container col-md-8">
 	  <h2>Reservation Details</h2>
-	  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+	  <p>Date:<?php echo $reservation_args['post_date'];?></p>            
 	  <table class="table">
-	    <thead>
-	      <tr>
-	        <th>Firstname</th>
-	        <th>Lastname</th>
-	        <th>Email</th>
-	      </tr>
-	    </thead>
+	  	<thead>
+	  		<tr><th colspan="2"><?php echo $reservation_args['post_title']; ?></th></tr>
+	  	</thead>
 	    <tbody>
 	      <tr>
-	        <td>John</td>
-	        <td>Doe</td>
-	        <td>john@example.com</td>
+	        <td>Name</td>
+	        <td><?php echo $reservation_post_meta['ca_name'];?></td>
 	      </tr>
+
 	      <tr>
-	        <td>Mary</td>
-	        <td>Moe</td>
-	        <td>mary@example.com</td>
+	        <td>Email</td>
+	        <td><?php echo $reservation_post_meta['email'];?></td>
 	      </tr>
+
 	      <tr>
-	        <td>July</td>
-	        <td>Dooley</td>
-	        <td>july@example.com</td>
+	        <td>Number of heads</td>
+	        <td><?php echo $reservation_post_meta['num_heads'];?></td>
 	      </tr>
+
+	      <tr>
+	        <td>Contact No.</td>
+	        <td><?php echo $reservation_post_meta['ca_contact_no'];?></td>
+	      </tr>
+
+	      <tr>
+	        <td>Venue</td>
+	        <td><?php echo $reservation_post_meta['ca_venue'];?></td>
+	      </tr>
+
+	       <tr>
+	        <td>Notes</td>
+	        <td><?php echo $reservation_args['post_content'];?></td>
+	      </tr>
+
 	    </tbody>
 	  </table>
+
+	  <?php 
+	  	if(!empty($reservation_post_meta['ca_food_tray_ids'])){
+	  		?>
+
+	  			<table class="table">
+				  	<thead>
+				  		<tr><th colspan="2">Food Tray</th></tr>
+				  	</thead>
+				    <tbody>
+				      <?php 
+				      	foreach ($reservation_post_meta['ca_food_tray_ids'] as $product_id) {
+			  				$post = get_post($product_id);
+			                $product_link = get_edit_post_link($product_id);
+			                $product_name  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
+				      	?>
+				      		 <tr>
+						        <td><?php echo $post->post_title;?></td>
+						      </tr>
+				      	<?php
+			            }
+
+				      ?>
+				    </tbody>
+			  </table>
+	  		<?php
+	  	}
+	  ?>
+	  <div id="btn-actions-container">
+	  	<button class="btn btn-info" onclick="print_receipt()">Print</button>
+	  	<a  href="<?php echo get_permalink(get_page_by_path('reserve-now'));?>" class="btn btn-warning" onclick="go_back()">Go Back</a>
+	  </div>
 	</div>
 	<div class="col-md-2">&nbsp;</div>
 </body>
-<?php echo '<script type="text/javascript">window.print();</script>';?>
+<?php echo '
+			<script type="text/javascript">
+
+				function print_receipt(){
+					document.getElementById("btn-actions-container").style.display = "none";
+					window.print();
+					document.getElementById("btn-actions-container").style.display = "block";
+				}
+
+				function go_back(){
+					window.location.reload();
+				}
+				window.print();
+			</script>';?>
 </html>

@@ -114,6 +114,14 @@ function reservation_init_func( $atts ) {
 add_shortcode( 'reservation_init', 'reservation_init_func' );
 
 /**
+ * Set content type as html
+ */
+function ca_set_content_type(){
+    return "text/html";
+}
+add_filter( 'wp_mail_content_type','ca_set_content_type' );
+
+/**
  * function to save the reservation data
  * @param null
  */
@@ -151,9 +159,92 @@ function save_reservation_data(){
                             'num_heads'  => $_POST['ca_num_of_heads'],
                             'email'         => $_POST['ca_email'],
                             'ca_contact_no' => $_POST['ca_contact_no'],
-                            'ca_venue'=> $_POST['ca_venue']
+                            'ca_venue'=> $_POST['ca_venue'],
+                            'ca_food_tray_ids' => $_POST['ca_specialty'],
+                            'ca_name'   => $_POST['ca_name']
                     );
+                    /**
+                     * Start Send Email
+                     */
+                    $products_str = '';
+                    if(!empty($reservation_post_meta['ca_food_tray_ids'])){
+                        foreach ($reservation_post_meta['ca_food_tray_ids'] as $product_id) {
+                                $post = get_post($product_id);
+                                $product_link = get_edit_post_link($product_id);
+                                $product_name  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
+                                $products_str .='<tr>
+                                                    <td>'.$post->post_title.'</td>
+                                                </tr>';
+                        }
+                    }
 
+                    $html_message = 'Dear '.$reservation_post_metap['ca_name'].',<br/>
+                                        <p>
+                                            Thank you for choosing us to host your special event. 
+                                            Details of your reservation are described below for your reference.
+                                        </p>
+
+                                        <h2>Reservation Details</h2>
+                                        <p>Date:'.$reservation_args['post_date'].'</p>
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr><th colspan="2">'.$reservation_args['post_title'].'</th></tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>Name</td>
+                                                <td>'.$reservation_post_meta['ca_name'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Email</td>
+                                                <td>'. $reservation_post_meta['email'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Number of heads</td>
+                                                <td>'. $reservation_post_meta['num_heads'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Contact No.</td>
+                                                <td>'. $reservation_post_meta['ca_contact_no'].'</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>Venue</td>
+                                                <td>'. $reservation_post_meta['ca_venue'].'</td>
+                                              </tr>
+
+                                               <tr>
+                                                <td>Notes</td>
+                                                <td>'. $reservation_args['post_content'].'</td>
+                                              </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr><th colspan="2">Food Tray</th></tr>
+                                            </thead>
+                                            <tbody>'. $products_str .'</tbody>
+                                        </table>
+                                        <p>
+                                            We aim to exceed your expectations and to handle the details for you, leaving you to enjoy your time with us.
+
+                                            <br/>Sincerely,<br/>
+
+                                            Chickent atitihan management
+
+                                        </p>
+                                    ';
+                    wp_mail( $_POST['ca_email'], 'Reservation Confirmed', $html_message );
+                    /**
+                     * End Send Email
+                     */
+                    
                     /**
                      * update_post_meta inserts data if its not available and
                      * update the data if it exists
@@ -164,9 +255,9 @@ function save_reservation_data(){
                      * Set post category
                      * Reference http://codex.wordpress.org/Function_Reference/wp_set_object_terms
                      */
-                    $cat_ids = array_map('intval',$_POST['ca_specialty']);
-                    $cat_ids = array_unique($cat_ids);
-                    wp_set_object_terms($insert_id, $cat_ids, 'reservation_category');
+                    // $cat_ids = array_map('intval',$_POST['ca_specialty']);
+                    // $cat_ids = array_unique($cat_ids);
+                    // wp_set_object_terms($insert_id, $cat_ids, 'reservation_category');
 
                     require_once 'printable_reservation.php';
                     exit;
@@ -183,6 +274,7 @@ add_action('wp','save_reservation_data');
  */
 function set_reservation_custom_columns_filter( $columns ) {
     //Add custom columns
+    $columns['ca_name']     = 'Name';
     $columns['no_of_heads']     = '# of Heads';
     $columns['email']           = 'Email';
     $columns['contact_no']      = 'Contact No';
@@ -206,6 +298,9 @@ function show_custom_columns_data($column, $post_id){
     $reservation_meta_data = get_post_meta($post_id, 'ca_reservate_meta_data', true);
 
     switch ($column) {
+        case 'ca_name':
+                 echo $reservation_meta_data['ca_name'];
+            break;
         case 'no_of_heads':
                 echo $reservation_meta_data['num_heads'];
             break;
@@ -217,15 +312,14 @@ function show_custom_columns_data($column, $post_id){
                 echo $reservation_meta_data['ca_contact_no'];
             break;
         case 'specialty':
-
-                $categories = get_the_terms($post_id,'reservation_category');
-                if(!empty($categories)){
-                    $category_names = array();
-
-                    foreach ($categories as $category) {
-                       $category_names[]  = $category->name;
+                if(!empty($reservation_meta_data['ca_food_tray_ids'])){
+                     $product_names = array();
+                    foreach ($reservation_meta_data['ca_food_tray_ids'] as $product_id) {
+                        $post = get_post($product_id);
+                        $product_link = get_edit_post_link($product_id);
+                        $product_names[]  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
                     }
-                    echo join(',', $category_names);
+                    echo join(',', $product_names);
                 }
 
             break;
@@ -242,7 +336,8 @@ function show_custom_columns_data($column, $post_id){
             if('publish' != $status){
                 $nonce  = wp_create_nonce('ca_update_reservation');
                 $link   = admin_url('admin-ajax.php?action=update_reservation_status_and_send_email&post_id='.$post_id.'&rca_nonce='.$nonce);
-                echo '<a href="',$link,'"> Confirm</a>';
+                $cancel_link = admin_url('admin-ajax.php?action=cancel_reservation&post_id='.$post_id.'&rca_nonce='.$nonce);
+                echo '<a href="',$link,'"> Confirm</a> | <a href="'.$cancel_link.'"> Cancel</a>';
             }else {
                 echo 'Confirmed';
             }
@@ -270,6 +365,34 @@ function reservation_remove_action_rows( $actions, $post){
     return $actions;
 }
 add_filter('post_row_actions','reservation_remove_action_rows',10, 2);
+
+/**
+ * Delete the reservation data including post meta data
+ */
+function cancel_reservation(){
+     global $wpdb;
+
+     if(!wp_verify_nonce($_REQUEST['rca_nonce'], 'ca_update_reservation')){
+        //do not do anything if the nonce is not verified
+        die();
+    }
+
+    if(!isset($_REQUEST['post_id'])){
+        //do not do anything
+        die();
+    }
+    //get the reference of the reservation
+    $post_id = $_REQUEST["post_id"];
+    wp_delete_post($post_id, true);
+    //$wpdb->delete($wpdb->posts, array('ID'=> $post_id));
+    delete_post_meta($post_id,'ca_reservate_meta_data');
+    $reservation_admin_url = admin_url('edit.php?post_type=reservation');
+    header("Location: ".$reservation_admin_url);
+    die();
+
+}
+add_action('wp_ajax_cancel_reservation','cancel_reservation');
+
 
 /**
  * Update the reservation to published and send email to the client
