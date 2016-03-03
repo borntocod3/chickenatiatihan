@@ -1,10 +1,16 @@
 <?php 
 	$date = date_format(date_create("now"),"Y/m/d H:i")
 ?>
-<div class='col-md-12'>
+        <div class='col-md-12'>
             <div class="form-group">
                 <label>Event Name</label>
                 <input name='ca_event_name' type='text'  value="" class="form-control" />
+            </div>
+        </div>
+        <div class='col-md-12'>
+            <div class="form-group">
+                <label>Name</label>
+                <input name='ca_name' type='text'  value="" class="form-control" />
             </div>
         </div>
         <div class='col-md-6'>
