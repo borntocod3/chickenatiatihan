@@ -193,20 +193,24 @@ add_action('wp','save_reservation_data');
  */
 function set_reservation_custom_columns_filter( $columns ) {
     //Add custom columns
-    $columns['ca_name']     = 'Name';
-    $columns['no_of_heads']     = '# of Heads';
+    $title = $columns['title'];
+    $date = $columns['date'];
+    //unset default columns like title and comments
+    unset($columns['comments']);
+    unset($columns['title']);
+    unset($columns['date']);
+
+    $columns['ca_id']           = 'ID';
+    $columns['title']           = 'Event Name';
+    $columns['ca_name']         = 'Name';
     $columns['email']           = 'Email';
+    $columns['no_of_heads']     = '# of Heads';
     $columns['contact_no']      = 'Contact No';
     $columns['specialty']       = 'Food Tray';
     $columns['specialty']       = 'Food Tray';
-    $columns['title']           = 'Event Name';
     $columns['venue']           = 'Venue';
     $columns['content']         = 'Notes';
-    $columns['ca_action']          = 'Action';
-
-    //unset default columns like title and comments
-    unset($columns['comments']);
-
+    $columns['ca_action']       = 'Action';
     return $columns;
 }
 add_filter( 'manage_reservation_posts_columns', 'set_reservation_custom_columns_filter', 10, 1 );
@@ -218,6 +222,9 @@ function show_custom_columns_data($column, $post_id){
     $reservation_meta_data = get_post_meta($post_id, 'ca_reservate_meta_data', true);
 
     switch ($column) {
+        case 'ca_id':
+                echo $post_id;
+            break;
         case 'ca_name':
                  echo $reservation_meta_data['ca_name'];
             break;
