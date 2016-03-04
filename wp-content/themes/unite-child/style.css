@@ -53,10 +53,6 @@ Text Domain:  chickenatiatihan-unite-child
     margin: 0;
 }
 
-.required {
-    color: #ff0000;
-}
-
 /*
 Album grid
 */
@@ -213,10 +209,10 @@ Album grid
 /*
 Contact Section Override
 */
-@media (min-width: 992px) {
-    #contact-section.col-md-12 {
-        padding: 0 10em;
-    }
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
 }
-
-
+span.required {
+    color:red;
+}

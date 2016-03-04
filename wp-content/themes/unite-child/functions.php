@@ -278,7 +278,8 @@ function set_reservation_custom_columns_filter( $columns ) {
     $columns['no_of_heads']     = '# of Heads';
     $columns['email']           = 'Email';
     $columns['contact_no']      = 'Contact No';
-    $columns['specialty']       = 'Specialty';
+    $columns['specialty']       = 'Food Tray';
+    $columns['specialty']       = 'Food Tray';
     $columns['title']           = 'Event Name';
     $columns['venue']           = 'Venue';
     $columns['content']         = 'Notes';
@@ -337,7 +338,7 @@ function show_custom_columns_data($column, $post_id){
                 $nonce  = wp_create_nonce('ca_update_reservation');
                 $link   = admin_url('admin-ajax.php?action=update_reservation_status_and_send_email&post_id='.$post_id.'&rca_nonce='.$nonce);
                 $cancel_link = admin_url('admin-ajax.php?action=cancel_reservation&post_id='.$post_id.'&rca_nonce='.$nonce);
-                echo '<a href="',$link,'"> Confirm</a> | <a href="'.$cancel_link.'"> Cancel</a>';
+                echo '<a class="button" href="'.$link.'"> Confirm</a> | <a class="button" href="'.$cancel_link.'"> Cancel</a>';
             }else {
                 echo 'Confirmed';
             }

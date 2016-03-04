@@ -19,6 +19,7 @@
 	<div class="col-md-2">&nbsp;</div>
 	<div class="container col-md-8">
 	  <h2>Reservation Details</h2>
+		<h3>Reservation #: <strong><?php echo $insert_id; ?></strong></h3>
 	  <p>Date:<?php echo $reservation_args['post_date'];?></p>            
 	  <table class="table">
 	  	<thead>

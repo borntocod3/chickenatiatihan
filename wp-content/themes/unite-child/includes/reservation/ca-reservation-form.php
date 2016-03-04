@@ -1,26 +1,31 @@
 <?php 
 	$date = date_format(date_create("now"),"Y/m/d H:i")
 ?>
+<div id="reservation-form">
         <div class='col-md-12'>
-            <div class="form-group">
-                <label>Event Name</label>
-                <input name='ca_event_name' type='text'  value="" class="form-control" />
-            </div>
+            <h4><span class="required">*</span>&nbsp;Required fields</h4>
         </div>
         <div class='col-md-12'>
-            <div class="form-group">
-                <label>Name</label>
-                <input name='ca_name' type='text'  value="" class="form-control" />
+            <div class="form-group required">
+                <label class="control-label">Event Name</label>
+                <input name='ca_event_name' type='text'  value="" class="form-control" required="true"/>
+            </div>
+        </div>
+
+        <div class='col-md-6'>
+            <div class="form-group required">
+                <label class="control-label">Your Name</label>
+                <input name='ca_name' type='text'  value="" class="form-control" required="true"/>
             </div>
         </div>
         <div class='col-md-6'>
-            <div class="form-group">
-                <label>Date</label>
+            <div class="form-group required">
+                <label class="control-label">Date</label>
                 <?php
                 wp_nonce_field('ca_reservation_data','ca_reservation_nonce');
                 ?>
                 <div class='input-group date' >
-                    <input name='ca_date' type='text' readonly="true" value="<?php echo $date; ?>" class="ca_date form-control" />
+                    <input name='ca_date' type='text' readonly="true" value="<?php echo $date; ?>" class="ca_date form-control" required="true" />
                     <span class="input-group-addon btn-date-icon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -28,26 +33,26 @@
             </div>
         </div>
         <div class='col-md-6'>
-            <div class="form-group">
-                <label>Number of heads</label>
-                <input name='ca_num_of_heads' type='text'  value="" class=" form-control" />
+            <div class="form-group required">
+                <label class="control-label">Number of heads</label>
+                <input name='ca_num_of_heads' type='text'  value="" class=" form-control" required="true" />
             </div>
         </div>
         <div class='col-md-6'>
-            <div class="form-group">
-            	<label>Email</label>
-                <input name='ca_email' type='email'  value="" class="form-control" />
+            <div class="form-group required">
+            	<label class="control-label">Email&nbsp;</label><i>(ex. juandelacruz@gmail.com)</i>
+                <input name='ca_email' type='email'  value="" class="form-control" required="true" />
             </div>
         </div>
         <div class='col-md-6'>
-            <div class="form-group">
-            	<label>Contact No.</label>
-                <input name='ca_contact_no' type='text'  value="" class="form-control" />
+            <div class="form-group required">
+            	<label class="control-label">Contact No.</label>
+                <input name='ca_contact_no' type='text'  value="" class="form-control" required="true"/>
             </div>
         </div>
         <div class='col-md-6'>
-            <div class="form-group">
-            	<label>Venue</label>
+            <div class="form-group required">
+            	<label class="control-label">Venue&nbsp;</label><i>(Leave blank if your venue is in Chicken atiatihan)</i>
                 <input name='ca_venue' type='text'  value="" class="form-control" />
             </div>
         </div>
@@ -73,9 +78,9 @@
 
                         ?>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Food Tray</label><br/>
-                                <select name='ca_specialty[]' class="ca_multi-select form-control"  multiple="multiple">
+                            <div class="form-group required">
+                                <label class="control-label">Food Tray</label><br/>
+                                <select name='ca_specialty[]' class="ca_multi-select form-control"  multiple="multiple" required="true">
                                 <?php
                                     foreach ($categories as $category) {
 
@@ -116,16 +121,17 @@
                     }
 
         ?>
-		<div class='col-md-6'><label>Notes</label>
+		<div class='col-md-6'><label class="control-label">Notes</label>
             <div class="form-group">
 
                 <textarea name='ca_notes' class="form-control"></textarea> 
             </div>
         </div>
 
-        <div class='col-md-6'>
+        <div class='col-md-2'>
             <div class="form-group">
-            	<label>&nbsp;</label><br/>
+            	<label class="control-label">&nbsp;</label><br/>
             	<input type="submit" class="btn btn-primary form-control" />
             </div>
         </div>
+</div>
