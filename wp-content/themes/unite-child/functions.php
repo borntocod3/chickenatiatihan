@@ -349,11 +349,11 @@ function update_reservation_status_and_send_email(){
          *
          * Start Send Email
          */
-        $post = get_post($product_id);
+        $post = get_post($post_id);
         $reservation_args = array(
             'post_title'    => $post->post_title,
             'post_content'  => $post->post_content,
-            'post_date'     => $post->post_date,
+            'post_date'     => $post->post_date
         );
 
         $reservation_post_meta = array(
