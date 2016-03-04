@@ -40,23 +40,21 @@ if(!empty($categories)){
     <div class="col-md-12 product-category">
         <h2><?php echo $category->name;?></h2>
     </div>
-
                 <?php
-                foreach ($products as $product) { ?>
-                    <div class="col-md-4">
-                        <?php
-                        $url = get_the_post_thumbnail_url($product->ID);
-                        ?>
-                        <div class="thumbnail">
-                            <img src="<?php echo $url;?>">
+                    foreach ($products as $product) { ?>
+                        <div class="col-md-4">
+                            <?php
+                            $url = get_the_post_thumbnail_url($product->ID);
+                            ?>
+                            <div class="thumbnail">
+                                <img src="<?php echo $url;?>">
+                            </div>
+                            <div class="caption">
+                                <h3><?php echo $product->post_title; ?></h3>
+                            </div>
                         </div>
-                        <div class="caption">
-                            <h3><?php echo $product->post_title; ?></h3>
-                        </div>
-                    </div>
                 <?php }
     }
 }
 ?>
-
 <?php get_footer();?>

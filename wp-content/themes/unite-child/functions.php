@@ -178,13 +178,14 @@ function save_reservation_data(){
                         }
                     }
 
-                    $html_message = 'Dear '.$reservation_post_metap['ca_name'].',<br/>
+                    $html_message = 'Dear '.$reservation_post_meta['ca_name'].',<br/>
                                         <p>
                                             Thank you for choosing us to host your special event. 
                                             Details of your reservation are described below for your reference.
                                         </p>
 
                                         <h2>Reservation Details</h2>
+										<h3>Reservation #: <strong>'.$insert_id.'</strong></h3>
                                         <p>Date:'.$reservation_args['post_date'].'</p>
 
                                         <table class="table">
@@ -236,7 +237,7 @@ function save_reservation_data(){
 
                                             <br/>Sincerely,<br/>
 
-                                            Chickent atitihan management
+                                            Chicken atiatihan management
 
                                         </p>
                                     ';
