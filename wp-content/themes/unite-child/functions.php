@@ -163,89 +163,7 @@ function save_reservation_data(){
                             'ca_food_tray_ids' => $_POST['ca_specialty'],
                             'ca_name'   => $_POST['ca_name']
                     );
-                    /**
-                     * Start Send Email
-                     */
-                    $products_str = '';
-                    if(!empty($reservation_post_meta['ca_food_tray_ids'])){
-                        foreach ($reservation_post_meta['ca_food_tray_ids'] as $product_id) {
-                                $post = get_post($product_id);
-                                $product_link = get_edit_post_link($product_id);
-                                $product_name  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
-                                $products_str .='<tr>
-                                                    <td>'.$post->post_title.'</td>
-                                                </tr>';
-                        }
-                    }
 
-                    $html_message = 'Dear '.$reservation_post_meta['ca_name'].',<br/>
-                                        <p>
-                                            Thank you for choosing us to host your special event. 
-                                            Details of your reservation are described below for your reference.
-                                        </p>
-
-                                        <h2>Reservation Details</h2>
-										<h3>Reservation #: <strong>'.$insert_id.'</strong></h3>
-                                        <p>Date:'.$reservation_args['post_date'].'</p>
-
-                                        <table class="table">
-                                            <thead>
-                                                <tr><th colspan="2">'.$reservation_args['post_title'].'</th></tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                <td>Name</td>
-                                                <td>'.$reservation_post_meta['ca_name'].'</td>
-                                              </tr>
-
-                                              <tr>
-                                                <td>Email</td>
-                                                <td>'. $reservation_post_meta['email'].'</td>
-                                              </tr>
-
-                                              <tr>
-                                                <td>Number of heads</td>
-                                                <td>'. $reservation_post_meta['num_heads'].'</td>
-                                              </tr>
-
-                                              <tr>
-                                                <td>Contact No.</td>
-                                                <td>'. $reservation_post_meta['ca_contact_no'].'</td>
-                                              </tr>
-
-                                              <tr>
-                                                <td>Venue</td>
-                                                <td>'. $reservation_post_meta['ca_venue'].'</td>
-                                              </tr>
-
-                                               <tr>
-                                                <td>Notes</td>
-                                                <td>'. $reservation_args['post_content'].'</td>
-                                              </tr>
-
-                                            </tbody>
-                                        </table>
-
-                                        <table class="table">
-                                            <thead>
-                                                <tr><th colspan="2">Food Tray</th></tr>
-                                            </thead>
-                                            <tbody>'. $products_str .'</tbody>
-                                        </table>
-                                        <p>
-                                            We aim to exceed your expectations and to handle the details for you, leaving you to enjoy your time with us.
-
-                                            <br/>Sincerely,<br/>
-
-                                            Chicken atiatihan management
-
-                                        </p>
-                                    ';
-                    wp_mail( $_POST['ca_email'], 'Reservation Confirmed', $html_message );
-                    /**
-                     * End Send Email
-                     */
-                    
                     /**
                      * update_post_meta inserts data if its not available and
                      * update the data if it exists
@@ -428,11 +346,110 @@ function update_reservation_status_and_send_email(){
         $email = $post_meta['email'];
         /**
          * Setup email then use wp_mail to send the email
+         *
+         * Start Send Email
          */
-        //wp_mail()
+        $post = get_post($product_id);
+        $reservation_args = array(
+            'post_title'    => $post->post_title,
+            'post_content'  => $post->post_content,
+            'post_date'     => $post->date,
+        );
+
+        $reservation_post_meta = array(
+            'num_heads'         => $post_meta['num_heads'],
+            'email'             => $post_meta['email'],
+            'ca_contact_no'     => $post_meta['ca_contact_no'],
+            'ca_venue'          => $post_meta['ca_venue'],
+            'ca_food_tray_ids'  => $post_meta['ca_food_tray_ids'],
+            'ca_name'           => $post_meta['ca_name']
+        );
+
+        $products_str = '';
+        if(!empty($reservation_post_meta['ca_food_tray_ids'])){
+            foreach ($reservation_post_meta['ca_food_tray_ids'] as $product_id) {
+                    $post = get_post($product_id);
+                    $product_link = get_edit_post_link($product_id);
+                    $product_name  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
+                    $products_str .='<tr>
+                                        <td>'.$post->post_title.'</td>
+                                    </tr>';
+            }
+        }
+
+        $html_message = 'Dear '.$reservation_post_meta['ca_name'].',<br/>
+                            <p>
+                                Thank you for choosing us to host your special event. 
+                                Details of your reservation are described below for your reference.
+                            </p>
+
+                            <h2>Reservation Details</h2>
+                            <h3>Reservation #: <strong>'.$insert_id.'</strong></h3>
+                            <p>Date:'.$reservation_args['post_date'].'</p>
+
+                            <table class="table">
+                                <thead>
+                                    <tr><th colspan="2">'.$reservation_args['post_title'].'</th></tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Name</td>
+                                    <td>'.$reservation_post_meta['ca_name'].'</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Email</td>
+                                    <td>'. $reservation_post_meta['email'].'</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Number of heads</td>
+                                    <td>'. $reservation_post_meta['num_heads'].'</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Contact No.</td>
+                                    <td>'. $reservation_post_meta['ca_contact_no'].'</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Venue</td>
+                                    <td>'. $reservation_post_meta['ca_venue'].'</td>
+                                  </tr>
+
+                                   <tr>
+                                    <td>Notes</td>
+                                    <td>'. $reservation_args['post_content'].'</td>
+                                  </tr>
+
+                                </tbody>
+                            </table>
+
+                            <table class="table">
+                                <thead>
+                                    <tr><th colspan="2">Food Tray</th></tr>
+                                </thead>
+                                <tbody>'. $products_str .'</tbody>
+                            </table>
+                            <p>
+                                We aim to exceed your expectations and to handle the details for you, leaving you to enjoy your time with us.
+
+                                <br/>Sincerely,<br/>
+
+                                Chicken atiatihan management
+
+                            </p>
+                        ';
+        $mail_sent = wp_mail( $reservation_post_meta['email'], 'Reservation Confirmed', $html_message );
+        /**
+         * End Send Email
+         */
+        
         //After email is end rediret to the reservation list
-         $reservation_admin_url = admin_url('edit.php?post_type=reservation');
-         header("Location: ".$reservation_admin_url);
+         if($mail_sent){
+            $reservation_admin_url = admin_url('edit.php?post_type=reservation');
+            header("Location: ".$reservation_admin_url);
+         }
     }
 
     die();
