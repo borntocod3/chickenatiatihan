@@ -50,7 +50,7 @@ if(!empty($categories)){
                                 <img src="<?php echo $url;?>">
                             </div>
                             <div class="caption">
-                                <h3><?php echo $product->post_title; ?></h3>
+                                <h4><?php echo $product->post_title; ?></h4>
                             </div>
                         </div>
                 <?php }

@@ -216,3 +216,7 @@ Contact Section Override
 span.required {
     color:red;
 }
+
+.product-category{
+    text-align: center;
+}
