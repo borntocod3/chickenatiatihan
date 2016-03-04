@@ -156,12 +156,12 @@ function save_reservation_data(){
                      * Reservation Post Data array
                      */
                     $reservation_post_meta = array(
-                            'num_heads'  => $_POST['ca_num_of_heads'],
-                            'email'         => $_POST['ca_email'],
-                            'ca_contact_no' => $_POST['ca_contact_no'],
-                            'ca_venue'=> $_POST['ca_venue'],
-                            'ca_food_tray_ids' => $_POST['ca_specialty'],
-                            'ca_name'   => $_POST['ca_name']
+                            'num_heads'         => $_POST['ca_num_of_heads'],
+                            'email'             => $_POST['ca_email'],
+                            'ca_contact_no'     => $_POST['ca_contact_no'],
+                            'ca_venue'          => $_POST['ca_venue'],
+                            'ca_food_tray_ids'  => $_POST['ca_specialty'],
+                            'ca_name'           => $_POST['ca_name']
                     );
 
                     /**
@@ -353,7 +353,7 @@ function update_reservation_status_and_send_email(){
         $reservation_args = array(
             'post_title'    => $post->post_title,
             'post_content'  => $post->post_content,
-            'post_date'     => $post->date,
+            'post_date'     => $post->post_date,
         );
 
         $reservation_post_meta = array(
@@ -384,7 +384,7 @@ function update_reservation_status_and_send_email(){
                             </p>
 
                             <h2>Reservation Details</h2>
-                            <h3>Reservation #: <strong>'.$insert_id.'</strong></h3>
+                            <h3>Reservation #: <strong>'.$product_id.'</strong></h3>
                             <p>Date:'.$reservation_args['post_date'].'</p>
 
                             <table class="table">
