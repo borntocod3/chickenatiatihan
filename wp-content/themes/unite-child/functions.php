@@ -256,20 +256,20 @@ function show_custom_columns_data($column, $post_id){
 
     switch ($column) {
         case 'ca_id':
-                echo $post_id;
+                echo isset($post_id) ? $post_id : '';
             break;
         case 'ca_name':
-                 echo $reservation_meta_data['ca_name'];
+                 echo isset($reservation_meta_data['ca_name']) ? $reservation_meta_data['ca_name'] : '';
             break;
         case 'no_of_heads':
-                echo $reservation_meta_data['num_heads'];
+                echo isset($reservation_meta_data['num_heads']) ? $reservation_meta_data['num_heads'] : '';
             break;
 
         case 'email':
-                echo  $reservation_meta_data['email'];
+                echo  isset($reservation_meta_data['email']) ? $reservation_meta_data['email'] : '';
             break;
         case 'contact_no':
-                echo $reservation_meta_data['ca_contact_no'];
+                echo isset($reservation_meta_data['ca_contact_no']) ? $reservation_meta_data['ca_contact_no'] : '';
             break;
         case 'specialty':
                 if(!empty($reservation_meta_data['ca_food_tray_ids'])){
@@ -288,7 +288,7 @@ function show_custom_columns_data($column, $post_id){
                 echo apply_filters('the_content',get_post_field('post_content', $post_id));
             break;
         case 'venue';
-                echo $reservation_meta_data['ca_venue'];
+                echo isset($reservation_meta_data['ca_venue']) ? $reservation_meta_data['ca_venue'] : '';
 
             break;
         case 'ca_action':
@@ -358,7 +358,7 @@ add_action('wp_ajax_cancel_reservation','cancel_reservation');
  * Update the reservation to published and send email to the client
  */
 function update_reservation_status_and_send_email(){
-
+    global $wpdb;
     if(!wp_verify_nonce($_REQUEST['rca_nonce'], 'ca_update_reservation')){
         //do not do anything if the nonce is not verified
         die();
@@ -374,10 +374,7 @@ function update_reservation_status_and_send_email(){
     /**
      * Update the status of the reservation details
      */
-    $update_status = wp_update_post(array(
-                        'ID'            => $post_id,
-                        'post_status'   => 'publish'
-                     ));
+    $update_status = $wpdb->update($wpdb->posts, array('post_status'=> 'publish'), array('ID'=>$post_id));
     if(0 != $update_status){
 
         $post_meta = get_post_meta($post_id, 'ca_reservate_meta_data', true);
