@@ -21,6 +21,12 @@ function fisa_admin_styles_and_scripts($hook){
         wp_enqueue_style("eventlist-datetimepicker-css", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.css");
         wp_enqueue_script("eveentlist-datetimepicker-js", get_stylesheet_directory_uri()."/library/datetimepicker/jquery.datetimepicker.full.js", array("jquery"));
         wp_enqueue_script("eveentlist-datefrom-and-to-js", get_stylesheet_directory_uri()."/library/datetimepicker/datefrom-dateto.js", array("jquery"));
+
+       /*
+        * Jquery Validate
+        */
+        wp_enqueue_script("ca-jquery-validate", get_stylesheet_directory_uri()."/library/jqueryvalidate/jquery.validate.js", array("jquery"));
+        wp_enqueue_script("ca-custom-reservation-validate", get_stylesheet_directory_uri()."/library/jqueryvalidate/admin.js", array("jquery"));
     }
 }
 add_action('admin_enqueue_scripts','fisa_admin_styles_and_scripts');
@@ -31,7 +37,11 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 function theme_enqueue_styles()
 {
     $parent_style = 'parent-style';
-
+    ?>
+    <script type="text/javascript">
+        var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+    </script>
+    <?php
     wp_enqueue_style($parent_style, get_bloginfo('template_directory') . '/style.css');
 //    wp_enqueue_style('child-style', get_bloginfo('stylesheet_directory'). '/style.css', array($parent_style));
     echo '<link rel="shortcut icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/images/favicon.png" />';
@@ -60,6 +70,9 @@ function theme_enqueue_styles()
      *  Custom assets
      */
     wp_enqueue_script("custom-js", get_stylesheet_directory_uri()."/library/js/custom.js", array("jquery"));
+
+    wp_enqueue_script("ca-jquery-validate", get_stylesheet_directory_uri()."/library/jqueryvalidate/jquery.validate.js", array("jquery"));
+    wp_enqueue_script("ca-custom-reservation-validate", get_stylesheet_directory_uri()."/library/jqueryvalidate/reservation.js", array("jquery"));
 }
 
 //Display social links
@@ -408,16 +421,21 @@ function update_reservation_status_and_send_email(){
         );
 
         $products_str = '';
+        $total = 0;
         if(!empty($reservation_post_meta['ca_food_tray_ids'])){
             foreach ($reservation_post_meta['ca_food_tray_ids'] as $product_id) {
                     $post = get_post($product_id);
                     $product_link = get_edit_post_link($product_id);
                     $product_name  = '<a href="'.$product_link.'"> '.$post->post_title.'</a>';
+                    $product_price  = get_post_meta($product_id,'ca_product_price', true);
+                    $total += $product_price;
+
                     $products_str .='<tr>
                                         <td>'.$post->post_title.'</td>
                                     </tr>';
             }
         }
+        $total_payable = $total * $reservation_post_meta['num_heads'];
 
         $html_message = 'Dear '.$reservation_post_meta['ca_name'].',<br/>
                             <p>
@@ -472,6 +490,9 @@ function update_reservation_status_and_send_email(){
                                     <tr><th colspan="2">Food Tray</th></tr>
                                 </thead>
                                 <tbody>'. $products_str .'</tbody>
+                                <tfoot>
+                                    <tr><td colspan="2">Total Php '.$total_payable.'</td>
+                                </tfoot>
                             </table>
                             <p>
                                 We aim to exceed your expectations and to handle the details for you, leaving you to enjoy your time with us.
@@ -498,5 +519,26 @@ function update_reservation_status_and_send_email(){
 }
 add_action('wp_ajax_update_reservation_status_and_send_email','update_reservation_status_and_send_email');
 
+/**
+ * Calculate Total using ajax
+ */
 
+function calculate_total(){
+    if(!isset($_POST['post_ids']))
+        die();
 
+    $post_ids = $_POST['post_ids'];
+
+    $total = 0;
+    foreach($post_ids as $post_id){
+        $product_price  = get_post_meta($post_id,'ca_product_price', true);
+        $total += $product_price;
+    }
+
+    if($total > 0 )
+        echo $total;
+
+    die();
+}
+add_action('wp_ajax_calculate_total','calculate_total');
+add_action('wp_ajax_nopriv_calculate_total', 'calculate_total');
