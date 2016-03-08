@@ -41,7 +41,11 @@ if(!empty($categories)){
         <h2><?php echo $category->name;?></h2>
     </div>
                 <?php
-                    foreach ($products as $product) { ?>
+                    foreach ($products as $product) {
+                        //get the previously save meta data
+                        $product_price  = get_post_meta($product->ID,'ca_product_price', true);
+                        ?>
+
                         <div class="col-md-4">
                             <?php
                             $url = get_the_post_thumbnail_url($product->ID);
@@ -50,8 +54,10 @@ if(!empty($categories)){
                                 <img src="<?php echo $url;?>">
                             </div>
                             <div class="caption">
-                                <h4><?php echo $product->post_title; ?></h4>
+                                <h4><?php echo $product->post_title; ?>&emsp;<span class="price">Php<strong><?php echo $product_price; ?></strong></span></h4>
                             </div>
+
+
                         </div>
                 <?php }
     }

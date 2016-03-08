@@ -238,3 +238,6 @@ span.required {
 .radio-section {
     margin: 10px 0;
 }
+#content > div > div.caption > h4 > span {
+    float: right;
+}
