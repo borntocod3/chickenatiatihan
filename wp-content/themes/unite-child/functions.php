@@ -55,6 +55,11 @@ function theme_enqueue_styles()
     wp_enqueue_style("ca-multiselect-css", get_stylesheet_directory_uri()."/library/multiselect/bootstrap-multiselect.css");
     wp_enqueue_script("ca-multiselect-js", get_stylesheet_directory_uri()."/library/multiselect/bootstrap-multiselect.js", array("jquery"));
     wp_enqueue_script("ca-multiselect-custom-js", get_stylesheet_directory_uri()."/library/multiselect/ca_multi-select-custom.js", array("jquery"));
+
+    /*
+     *  Custom assets
+     */
+    wp_enqueue_script("custom-js", get_stylesheet_directory_uri()."/library/js/custom.js", array("jquery"));
 }
 
 //Display social links

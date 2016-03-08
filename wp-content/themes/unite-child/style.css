@@ -220,3 +220,21 @@ span.required {
 .product-category{
     text-align: center;
 }
+
+#payment-option > hr.section-divider {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#payment-option > hr.section-divider:after {
+    content: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.payment-content {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+.radio-section {
+    margin: 10px 0;
+}
