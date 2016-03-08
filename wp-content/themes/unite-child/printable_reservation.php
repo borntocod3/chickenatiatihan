@@ -77,6 +77,7 @@
 				      		 <tr>
 						        <td><?php echo $post->post_title;?></td>
 						      </tr>
+						
 				      	<?php
 			            }
 
@@ -92,6 +93,10 @@
 	  </div>
 	</div>
 	<div class="col-md-2">&nbsp;</div>
+	<div class="col-md-6 col-md-offset-3"> 
+						        <h4>“Dear Customer, should you choose to confirm this reservation please present this document in the attending personnel of chickenatiatihan, 
+						        in the event that you don’t have a printing device, you can choose to take a picture of this document or secure a copy of the reservation number. Thankyou."</h4>
+						      </div>
 </body>
 <?php echo '
 			<script type="text/javascript">
