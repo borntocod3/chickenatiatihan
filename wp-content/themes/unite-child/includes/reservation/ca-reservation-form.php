@@ -35,7 +35,7 @@
         <div class='col-md-6'>
             <div class="form-group required">
                 <label class="control-label">Number of heads</label>
-                <input name='ca_num_of_heads' type='text'  value="" class=" form-control" required="true" />
+                <input name='ca_num_of_heads' id="ca_num_of_heads" type='text'  value="" class=" form-control" required="true" />
             </div>
         </div>
         <div class='col-md-6'>
@@ -101,10 +101,13 @@
                                         ?>
                                         <optgroup label="<?php echo $category->name;?>">
                                         <?php 
-                                            foreach ($products as $product) { ?>
+                                            foreach ($products as $product) {
+                                                //get the previously save meta data
+                                                $product_price  = get_post_meta($product->ID,'ca_product_price', true);
+                                                ?>
 
                                                 <option value="<?php echo $product->ID; ?>">
-                                                    <?php echo $product->post_title; ?>
+                                                    <?php echo $product->post_title.' Php '.$product_price; ?>
                                                 </option>
 
                                             <?php }
@@ -130,7 +133,7 @@
 
         <div class='col-md-2'>
             <div class="form-group">
-            	<label class="control-label">&nbsp;</label><br/>
+            	<label class="control-label">&nbsp;Total <span id="lbl-total"></span></label><br/>
             	<input type="submit" class="btn btn-primary form-control" />
             </div>
         </div>
